@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="title: node js1.javascript本质上是什么？就是一门编程语言，解释执行的。 2、浏览器的内核包括两部分核心：-1、DOM渲染引擎；-2、js解析器（js引擎）。 3、js运行在浏览器中的内核中的js引擎内部。4、是否js只能运行在浏览器中？-不是的。 5、实现动态网站的技术：-java php .net python nodejs……。 6、基于Node.js和第三方工具el">
+<meta name="description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;-(1)、构造方法（类）        +—–&amp;gt;实例化buf对象:         *   new Buffer(size):              分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kevin-个人博客">
+<meta property="og:title" content="node js">
 <meta property="og:url" content="http://yoursite.com/2017/07/27/node-js/index.html">
 <meta property="og:site_name" content="kevin-个人博客">
-<meta property="og:description" content="title: node js1.javascript本质上是什么？就是一门编程语言，解释执行的。 2、浏览器的内核包括两部分核心：-1、DOM渲染引擎；-2、js解析器（js引擎）。 3、js运行在浏览器中的内核中的js引擎内部。4、是否js只能运行在浏览器中？-不是的。 5、实现动态网站的技术：-java php .net python nodejs……。 6、基于Node.js和第三方工具el">
-<meta property="og:updated_time" content="2017-07-27T04:20:34.723Z">
+<meta property="og:description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;-(1)、构造方法（类）        +—–&amp;gt;实例化buf对象:         *   new Buffer(size):              分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffe">
+<meta property="og:updated_time" content="2017-07-27T04:36:00.371Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kevin-个人博客">
-<meta name="twitter:description" content="title: node js1.javascript本质上是什么？就是一门编程语言，解释执行的。 2、浏览器的内核包括两部分核心：-1、DOM渲染引擎；-2、js解析器（js引擎）。 3、js运行在浏览器中的内核中的js引擎内部。4、是否js只能运行在浏览器中？-不是的。 5、实现动态网站的技术：-java php .net python nodejs……。 6、基于Node.js和第三方工具el">
+<meta name="twitter:title" content="node js">
+<meta name="twitter:description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;-(1)、构造方法（类）        +—–&amp;gt;实例化buf对象:         *   new Buffer(size):              分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffe">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>kevin-个人博客</title>
+<title>node js | kevin-个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -260,7 +260,7 @@
   
     <div class="article-meta">
       <a href="/2017/07/27/node-js/" class="article-date">
-      <time datetime="2017-07-27T04:08:05.470Z" itemprop="datePublished">2017-07-27</time>
+      <time datetime="2017-07-27T04:26:58.520Z" itemprop="datePublished">2017-07-27</time>
 </a>
 
 
@@ -271,44 +271,197 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      node js
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="title-node-js"><a href="#title-node-js" class="headerlink" title="title: node js"></a>title: node js</h1><h2 id="1-javascript本质上是什么？"><a href="#1-javascript本质上是什么？" class="headerlink" title="1.javascript本质上是什么？"></a>1.javascript本质上是什么？</h2><p>就是一门编程语言，解释执行的。</p>
-<h2 id="2、浏览器的内核包括两部分核心："><a href="#2、浏览器的内核包括两部分核心：" class="headerlink" title="2、浏览器的内核包括两部分核心："></a>2、浏览器的内核包括两部分核心：</h2><p>-1、DOM渲染引擎；<br>-2、js解析器（js引擎）。</p>
-<h2 id="3、js运行在浏览器中的内核中的js引擎内部。"><a href="#3、js运行在浏览器中的内核中的js引擎内部。" class="headerlink" title="3、js运行在浏览器中的内核中的js引擎内部。"></a>3、js运行在浏览器中的内核中的js引擎内部。</h2><h2 id="4、是否js只能运行在浏览器中？"><a href="#4、是否js只能运行在浏览器中？" class="headerlink" title="4、是否js只能运行在浏览器中？"></a>4、是否js只能运行在浏览器中？</h2><p>-不是的。</p>
-<h2 id="5、实现动态网站的技术："><a href="#5、实现动态网站的技术：" class="headerlink" title="5、实现动态网站的技术："></a>5、实现动态网站的技术：</h2><p>-java php .net python nodejs……。</p>
-<h2 id="6、基于Node-js和第三方工具electron可以开发桌面应用程序。"><a href="#6、基于Node-js和第三方工具electron可以开发桌面应用程序。" class="headerlink" title="6、基于Node.js和第三方工具electron可以开发桌面应用程序。"></a>6、基于Node.js和第三方工具electron可以开发桌面应用程序。</h2><h3 id="7、REPL-read-eval-print-loop-读取代码-执行-打印结果-循环这个过程。"><a href="#7、REPL-read-eval-print-loop-读取代码-执行-打印结果-循环这个过程。" class="headerlink" title="7、REPL read-eval-print-loop 读取代码-执行-打印结果-循环这个过程。"></a>7、REPL read-eval-print-loop 读取代码-执行-打印结果-循环这个过程。</h3><h2 id="8、在REPL环境中，-表示最后一次执行结果-exit-可以退出REPL环境。"><a href="#8、在REPL环境中，-表示最后一次执行结果-exit-可以退出REPL环境。" class="headerlink" title="8、在REPL环境中，_表示最后一次执行结果; .exit 可以退出REPL环境。"></a>8、在REPL环境中，_表示最后一次执行结果; .exit 可以退出REPL环境。</h2><h2 id="9-Node-js-是一种建立在Google-Chrome’s-v8-engine上的-non-blocking-非阻塞）-event-driven-（基于事件的）-I-O平台"><a href="#9-Node-js-是一种建立在Google-Chrome’s-v8-engine上的-non-blocking-非阻塞）-event-driven-（基于事件的）-I-O平台" class="headerlink" title="9.Node.js 是一种建立在Google Chrome’s v8 engine上的 non-blocking (非阻塞）, event-driven （基于事件的） I/O平台."></a>9.Node.js 是一种建立在Google Chrome’s v8 engine上的 non-blocking (非阻塞）, event-driven （基于事件的） I/O平台.</h2><h2 id="Node-js平台使用的开发语言是JavaScript，平台提供了操作系统低层的API，方便做服务器端编程，具体包括文件操作、进程操作、通信操作等系统模块"><a href="#Node-js平台使用的开发语言是JavaScript，平台提供了操作系统低层的API，方便做服务器端编程，具体包括文件操作、进程操作、通信操作等系统模块" class="headerlink" title="Node.js平台使用的开发语言是JavaScript，平台提供了操作系统低层的API，方便做服务器端编程，具体包括文件操作、进程操作、通信操作等系统模块"></a>Node.js平台使用的开发语言是JavaScript，平台提供了操作系统低层的API，方便做服务器端编程，具体包括文件操作、进程操作、通信操作等系统模块</h2><h2 id="10-Node-js可以用来做什么？"><a href="#10-Node-js可以用来做什么？" class="headerlink" title="10.Node.js可以用来做什么？"></a>10.Node.js可以用来做什么？</h2><ul>
-<li>具有复杂逻辑的动态网站</li>
-<li>WebSocket服务器</li>
-<li>命令行工具</li>
-<li>带有图形界面的本地应用程序</li>
-<li>……</li>
-</ul>
-<h2 id="11-常见的dos-命令："><a href="#11-常见的dos-命令：" class="headerlink" title="11.常见的dos 命令："></a>11.常见的dos 命令：</h2><ul>
-<li>md    创建目录</li>
-<li>rmdir(rd)   删除目录，目录内没有文档。</li>
-<li>echo on a.txt    创建空文件</li>
-<li>del    删除文件</li>
-<li>rm 文件名    删除文件</li>
-<li>cat 文件名   查看文件内容</li>
-<li>cat &gt; 文件名 向文件中写上内容。</li>
-<li>dir   查看文件夹</li>
-<li>cd    进入某个目录</li>
-<li>md    新建目录</li>
-<li>rd    删除目录</li>
-<li>copy   拷贝文件       格式： copy [原目录或文件] [目的目录或文件]</li>
-<li>del   删除文件       格式： del *.txt  删除后缀为.txt的文件</li>
-</ul>
-<h2 id="12-nvm常用的命令："><a href="#12-nvm常用的命令：" class="headerlink" title="12.nvm常用的命令："></a>12.nvm常用的命令：</h2><ul>
-<li>nvm list 查看当前安装的Node.js所有版本</li>
-<li>nvm install 版本号 安装指定版本的Node.js</li>
-<li>nvm uninstall 版本号 卸载指定版本的Node.js</li>
-<li>nvm use 版本号 选择指定版本的Node.js</li>
-</ul>
-<p>date: 2017-07-27 12:08:05</p>
-<p>tags:</p>
+        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="1-全局对象-Buffer的基本操作"><a href="#1-全局对象-Buffer的基本操作" class="headerlink" title="1. 全局对象 Buffer的基本操作"></a>1. 全局对象 Buffer的基本操作</h3><p>Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;<br>-(1)、构造方法（类）<br>        +—–&gt;实例化buf对象:</p>
+<pre><code>        *   new Buffer(size):
 
+            分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出 RangeError 错误。如果 size 为 0，则创建一个长度为 0 的 Buffer。
+                 eg:let buf = new Buffer(5);
+                    console.log(buf);              // &lt;Buffer 00 00 00 00 00&gt;
+
+        *   new Buffer(string[, encoding]):
+            string &lt; string &gt; 要编码的字符串,
+            encoding &lt; string &gt; string 的字符串编码。 默认： &apos;utf8&apos;,
+            创建一个包含给定字符串 string 的 Buffer。encoding 参数制定 string 的字符串编码。
+                 eg:const buf1 = new Buffer(&apos;this is a tést&apos;);
+                    console.log(buf1.toString());// 输出: this is a tést
+
+        *   类方法：Buffer.alloc(size[, fill[, encoding]])  (常用)
+
+            size &lt;integer&gt; 新建的 Buffer 期望的长度
+            fill &lt;string&gt; | &lt;Buffer&gt; | &lt;integer&gt; 用来预填充新建的 Buffer 的值。 默认: 0
+            encoding &lt;string&gt; 如果 fill 是字符串，则该值是它的字符编码。 默认: &apos;utf8&apos;
+            分配一个大小为 size 字节的新建的 Buffer 。 如果 fill 为 undefined ，则该 Buffer 会用 0 填充。
+            eg: let buf = Buffer.alloc(5);
+                console.log(buf);            // &lt;Buffer 00 00 00 00 00&gt;
+
+
+        *   类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
+
+            arrayBuffer &lt;ArrayBuffer&gt; 一个 ArrayBuffer，或一个 TypedArray 的 .buffer 属性。
+            byteOffset &lt;integer&gt; 开始拷贝的索引。默认为 0。
+            length &lt;integer&gt; 拷贝的字节数。默认为 arrayBuffer.length - byteOffset。
+            该方法将创建一个 ArrayBuffer 的视图，而不会复制底层内存。例如，当传入一个 TypedArray 实例的 .buffer 属性的引用时，这个新建的 Buffer 会像 TypedArray 那样共享同一分配的内存。
+            let buf = Buffer.from(&apos;hello&apos;,&apos;utf8&apos;);
+            console.log(buf);
+
+        *   类方法：Buffer.from(array)
+
+            通过一个八位字节的 array 创建一个新的 Buffer 。
+            let buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
+            console.log(buf.toString());
+
+-(2)、静态方法
+            类方法：Buffer.isEncoding(encoding)
+
+            如果 encoding 是一个支持的字符编码则返回 true，否则返回 false 。
+            encoding &lt;string&gt; 一个要检查的字符编码名称
+            返回: &lt;boolean&gt;
+
+            eg: console.log(Buffer.isEncoding(&apos;utf8&apos;));  // true
+                console.log(Buffer.isEncoding(&apos;gbk&apos;));   // false
+
+            类方法：Buffer.isBuffer(obj)
+
+            obj &lt;Object&gt;
+            返回: &lt;boolean&gt;
+            如果 obj 是一个 Buffer 则返回 true ，否则返回 false 。
+            eg: let buf = Buffer.from(&apos;hello&apos;);
+                console.log(Buffer.isBuffer(buf));  // true
+                console.log(Buffer.isBuffer({}));   // false
+
+            类方法：Buffer.byteLength(string[, encoding])
+
+            返回一个字符串的实际字节长度。 这与 String.prototype.length 不同，因为那返回字符串的字符数。
+            string: &lt;string&gt; | &lt;Buffer&gt; | &lt;TypedArray&gt; | &lt;DataView&gt; | &lt;ArrayBuffer&gt; 要计算长度的值
+            encoding :&lt;string&gt; 如果 string 是字符串，则这是它的字符编码。 默认: &apos;utf8&apos;
+            返回: &lt;integer&gt; string 包含的字节数
+
+            eg: let buf = Buffer.from(&apos;中国&apos;,&apos;ascii&apos;);
+                console.log(Buffer.byteLength(buf));   // 2
+                console.log(buf.toString());   // 乱码
+            eg: let buf = Buffer.from(&apos;中国&apos;,&apos;utf8&apos;);
+                console.log(Buffer.byteLength(buf));   // 2
+                console.log(buf.toString());   // 中国
+
+            类方法：Buffer.concat(list[, totalLength])
+
+            返回一个合并了 list 中所有 Buffer 实例的新建的 Buffer 。
+            list &lt;Array&gt; 要合并的 Buffer 或 Uint8Array 实例的数组
+            totalLength &lt;integer&gt; 合并时 list 中 Buffer 实例的总长度
+            返回: &lt;Buffer&gt;
+
+            eg：let buf1 = Buffer.alloc(3);
+                let buf2 = Buffer.alloc(5);
+                let buf3 = Buffer.concat([buf1,buf2]);
+                console.log(Buffer.byteLength(buf3));   // 8
+
+            eg: let buf1 = Buffer.from(&apos;tom&apos;);
+                let buf2 = Buffer.from(&apos;jerry&apos;);
+                let buf3 = Buffer.concat([buf1,buf2]);
+                console.log(Buffer.byteLength(buf3));   // 8
+                console.log(buf3.toString());           // tomjerry
+
+-(3)、实例方法
+
+            buf.write(string[, offset[, length]][, encoding]):
+
+            根据 encoding 的字符编码写入 string 到 buf 中的 offset 位置。 length 参数是写入的字节数。 如果 buf 没有足够的空间保存整个字符串，则只会写入 string 的一部分。 只部分解码的字符不会被写入。
+            string &lt;string&gt; 要写入 buf 的字符串
+            offset &lt;integer&gt; 开始写入 string 的位置。默认: 0
+            length &lt;integer&gt; 要写入的字节数。默认: buf.length - offset
+            encoding &lt;string&gt; string 的字符编码。默认: &apos;utf8&apos;
+            返回: &lt;integer&gt; 写入的字节数
+
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.alloc(5);</div><div class="line">    buf.write(<span class="string">'hello'</span>,2,2);  //从索引2开始写入，写入2个</div><div class="line">    console.log(buf);      //  &lt;Buffer 00 00 68 65 00&gt;</div><div class="line">    console.log(buf.toString()); //he</div></pre></td></tr></table></figure>
+
+            buf.slice([start[, end]])
+            返回一个指向相同原始内存的新建的 Buffer，但做了偏移且通过 start 和 end 索引进行裁剪。
+            start &lt;integer&gt; 新建的 Buffer 开始的位置。 默认: 0
+            end &lt;integer&gt; 新建的 Buffer 结束的位置（不包含）。 默认: buf.length
+            返回: &lt;Buffer&gt;
+
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    <span class="built_in">let</span> buf1 = buf.slice(2,3);    // 从索引2裁剪到索引3</div><div class="line">    console.log(buf === buf1);//<span class="literal">false</span></div><div class="line">    console.log(buf1.toString());  // l</div></pre></td></tr></table></figure>
+
+            buf.toJSON()
+            toJSON方法不需要显式调用，当JSON.stringify方法调用的时候会自动调用toJSON方法
+            返回 buf 的 JSON 格式。 当字符串化一个 Buffer 实例时，JSON.stringify() 会隐式地调用该函数。
+
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);</div><div class="line">    const json = JSON.stringify(buf);</div><div class="line">    console.log(json);    // &#123;<span class="string">"type"</span>:<span class="string">"Buffer"</span>,<span class="string">"data"</span>:[1,2,3,4,5]&#125;</div></pre></td></tr></table></figure>
+
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: const buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    const json = JSON.stringify(buf);</div><div class="line">    console.log(json);       // &#123;<span class="string">"type"</span>:<span class="string">"Buffer"</span>,<span class="string">"data"</span>:[104,101,108,108,111]&#125; (十进制代码)</div></pre></td></tr></table></figure>
+</code></pre><h3 id="2-path-路径操作"><a href="#2-path-路径操作" class="headerlink" title="2. path 路径操作"></a>2. path 路径操作</h3><p>进行路径操作之前要对path 进行引入 ：const path = require(‘path’);</p>
+<p>在linux 系统中 路径 只能用 / 表示 ；<br>在windows 系统中 可以用 / 和 \ 都可以，但是 \ 代表转义字符，所以我们也可以用 \ 表示</p>
+<pre><code>-1.path.basename(path[, ext])  ： 获取路径的最后一部分
+    path &lt;string&gt;
+    ext &lt;string&gt; 可选的文件扩展名
+    返回: &lt;string&gt;
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>));  //  quux.html</div><div class="line">    console.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>, <span class="string">'.html'</span>));  //quux</div></pre></td></tr></table></figure>
+
+-2.path.dirname(path)  :获取路径
+    path.dirname() 方法返回一个 path 的目录名
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(__dirname);          //// 打印的是当前文件所在的目录，不包括文件名</div><div class="line">    console.log(path.dirname(<span class="string">'/abc/qqq/www/abc'</span>));  ///abc/qqq/www</div></pre></td></tr></table></figure>
+
+-3.path.extname(path) :获取扩展名称
+    path.extname() 方法返回 path 的扩展名
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg:console.log(path.extname(<span class="string">'index.html'</span>));  // .html</div></pre></td></tr></table></figure>
+
+-4.路径的格式化处理
+    path.format(pathObject)  方法会从一个对象返回一个路径字符串。 obj-&gt;string  与 path.parse() 相反。
+    path.parse() path.parse() 方法返回一个对象，对象的属性表示 path 的元素。 string-&gt;obj
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">eg:</div><div class="line">    <span class="built_in">let</span> obj = path.parse(__filename);</div><div class="line">    console.log(obj);</div><div class="line">    console.log(obj.base);</div><div class="line">    /*&#123; root: <span class="string">'G:\\'</span>,</div><div class="line">      dir: <span class="string">'G:\\传智播客\\代码\\就业班\\nodejs\\2'</span>,</div><div class="line">      base: <span class="string">'04.js'</span>,</div><div class="line">      ext: <span class="string">'.js'</span>,</div><div class="line">      name: <span class="string">'04'</span> &#125;*/</div><div class="line">    //04.js</div></pre></td></tr></table></figure>
+
+-5.path.isAbsolute(path) :判断是否为绝对路径
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.isAbsolute(<span class="string">'/foo/bar'</span>));  // <span class="literal">true</span></div><div class="line">    console.log(path.isAbsolute(<span class="string">'C:/foo/..'</span>));  //<span class="literal">true</span></div><div class="line">    path.isAbsolute(<span class="string">'qux/'</span>);     // <span class="literal">false</span></div><div class="line">    path.isAbsolute(<span class="string">'.'</span>);        // <span class="literal">false</span></div></pre></td></tr></table></figure>
+
+-6.path.join([...paths]) :拼接路径（..表示上层路径；.表示当前路径）,在连接路径的时候会格式化路径
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.join(<span class="string">'/foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz/asdf'</span>, <span class="string">'quux'</span>, <span class="string">'../../'</span>)); //\foo\bar\baz\</div></pre></td></tr></table></figure>
+
+-7.path.normalize(path) ：规范化路径
+path.normalize() 方法会规范化给定的 path，并解析 &apos;..&apos; 和 &apos;.&apos; 片段。
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：console.log(path.normalize(<span class="string">'/foo/bar//baz/asdf/quux/..'</span>));  //  \foo\bar\baz\asdf</div><div class="line">    console.log(path.normalize(<span class="string">'C:\\temp\\\\foo\\bar\\..\\'</span>));  //  C:\temp\foo\</div></pre></td></tr></table></figure>
+
+-8.path.relative(from, to) 两个参数，计算两个路径的相对路径
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：console.log(path.relative(<span class="string">'/data/orandea/test/aaa'</span>, <span class="string">'/data/orandea/impl/bbb'</span>)); //  ..\..\impl\bbb</div><div class="line">    console.log(path.relative(<span class="string">'C:\\orandea\\test\\aaa'</span>, <span class="string">'C:\\orandea\\impl\\bbb'</span>)); // ..\..\impl\bbb</div></pre></td></tr></table></figure>
+
+-9.path.resolve([...paths])  :path.resolve() 方法会把一个路径或路径片段的序列解析为一个绝对路径。
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.resolve(<span class="string">'wwwroot'</span>, <span class="string">'static_files/png/'</span>, <span class="string">'../gif/image.gif'</span>));</div><div class="line">// G:\传智播客\代码\就业班\nodejs\2\wwwroot\static_files\gif\image.gif</div></pre></td></tr></table></figure>
+
+-10. 两个特殊属性
+path.delimiter  :    环境变量分隔符(windows中使用; linux中使用:)
+path.sep      :   表示路径分隔符（windows是\ Linux是/）
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.delimiter);//  : 或 ;</div><div class="line">    console.log(path.sep);//  \   或   /</div></pre></td></tr></table></figure>
+</code></pre>
       
     </div>
     
@@ -316,12 +469,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/07/27/node-js/"></a></p>
+        <p><span>本文标题:</span><a href="/2017/07/27/node-js/">node js</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">徐振华</a></p>
-        <p><span>发布时间:</span>2017-07-27, 12:08:05</p>
-        <p><span>最后更新:</span>2017-07-27, 12:20:34</p>
+        <p><span>发布时间:</span>2017-07-27, 12:26:58</p>
+        <p><span>最后更新:</span>2017-07-27, 12:36:00</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/07/27/node-js/" title="">http://yoursite.com/2017/07/27/node-js/</a>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/27/node-js/" title="node js">http://yoursite.com/2017/07/27/node-js/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/27/node-js/　　作者: 徐振华" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -336,8 +489,8 @@
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/07/27/nodejs 第一天/">
-                    
+                <a href="/2017/07/26/hello-world/">
+                    Hello World
                 </a>
             </div>
         
@@ -349,7 +502,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#title-node-js"><span class="toc-number">1.</span> <span class="toc-text">title: node js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-javascript本质上是什么？"><span class="toc-number">1.1.</span> <span class="toc-text">1.javascript本质上是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、浏览器的内核包括两部分核心："><span class="toc-number">1.2.</span> <span class="toc-text">2、浏览器的内核包括两部分核心：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、js运行在浏览器中的内核中的js引擎内部。"><span class="toc-number">1.3.</span> <span class="toc-text">3、js运行在浏览器中的内核中的js引擎内部。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、是否js只能运行在浏览器中？"><span class="toc-number">1.4.</span> <span class="toc-text">4、是否js只能运行在浏览器中？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、实现动态网站的技术："><span class="toc-number">1.5.</span> <span class="toc-text">5、实现动态网站的技术：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、基于Node-js和第三方工具electron可以开发桌面应用程序。"><span class="toc-number">1.6.</span> <span class="toc-text">6、基于Node.js和第三方工具electron可以开发桌面应用程序。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7、REPL-read-eval-print-loop-读取代码-执行-打印结果-循环这个过程。"><span class="toc-number">1.6.1.</span> <span class="toc-text">7、REPL read-eval-print-loop 读取代码-执行-打印结果-循环这个过程。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、在REPL环境中，-表示最后一次执行结果-exit-可以退出REPL环境。"><span class="toc-number">1.7.</span> <span class="toc-text">8、在REPL环境中，_表示最后一次执行结果; .exit 可以退出REPL环境。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-Node-js-是一种建立在Google-Chrome’s-v8-engine上的-non-blocking-非阻塞）-event-driven-（基于事件的）-I-O平台"><span class="toc-number">1.8.</span> <span class="toc-text">9.Node.js 是一种建立在Google Chrome’s v8 engine上的 non-blocking (非阻塞）, event-driven （基于事件的） I/O平台.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js平台使用的开发语言是JavaScript，平台提供了操作系统低层的API，方便做服务器端编程，具体包括文件操作、进程操作、通信操作等系统模块"><span class="toc-number">1.9.</span> <span class="toc-text">Node.js平台使用的开发语言是JavaScript，平台提供了操作系统低层的API，方便做服务器端编程，具体包括文件操作、进程操作、通信操作等系统模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-Node-js可以用来做什么？"><span class="toc-number">1.10.</span> <span class="toc-text">10.Node.js可以用来做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-常见的dos-命令："><span class="toc-number">1.11.</span> <span class="toc-text">11.常见的dos 命令：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-nvm常用的命令："><span class="toc-number">1.12.</span> <span class="toc-text">12.nvm常用的命令：</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-全局对象-Buffer的基本操作"><span class="toc-number">1.1.</span> <span class="toc-text">1. 全局对象 Buffer的基本操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-path-路径操作"><span class="toc-number">1.2.</span> <span class="toc-text">2. path 路径操作</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -385,7 +538,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"　| kevin-个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"node js　| kevin-个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -411,13 +564,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/07/27/nodejs 第一天/" title="下一篇: ">
+            <a href="/2017/07/26/hello-world/" title="下一篇: Hello World">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/node-js/">node-js</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/nodejs 第一天/">nodejs 第一天</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/nodejs第四天/">nodejs第四天</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/node-js/">node js</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/hello-world/">Hello World</a></li></ul>
 
 
 

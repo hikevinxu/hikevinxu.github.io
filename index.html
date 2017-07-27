@@ -259,11 +259,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-nodejs 第一天" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-node-js" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/27/nodejs 第一天/" class="article-date">
-      <time datetime="2017-07-27T02:02:21.503Z" itemprop="datePublished">2017-07-27</time>
+      <a href="/2017/07/27/node-js/" class="article-date">
+      <time datetime="2017-07-27T04:26:58.520Z" itemprop="datePublished">2017-07-27</time>
 </a>
 
 
@@ -274,218 +274,190 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/27/node-js/">node js</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>#1、javascript本质上是什么？就是一门编程语言，解释执行的。</p>
-<p>#2、浏览器的内核包括两部分核心：<br>    -1、DOM渲染引擎；<br>    -2、js解析器（js引擎）。</p>
-<p>#3、js运行在浏览器中的内核中的js引擎内部。</p>
-<p>#4、是否js只能运行在浏览器中？<br>    -不是的。</p>
-<p>#5、实现动态网站的技术：<br>    -java php .net python nodejs……。</p>
-<p>#6、基于Node.js和第三方工具electron可以开发桌面应用程序。</p>
-<p>#7、REPL read-eval-print-loop 读取代码-执行-打印结果-循环这个过程。</p>
-<p>#8、在REPL环境中，_表示最后一次执行结果; .exit 可以退出REPL环境。</p>
-<p>#9.Node.js 是一种建立在Google Chrome’s v8 engine上的 non-blocking (非阻塞）, event-driven （基于事件的） I/O平台.<br>Node.js平台使用的开发语言是JavaScript，平台提供了操作系统低层的API，方便做服务器端编程，具体包括文件操作、进程操作、通信操作等系统模块</p>
-<p>#10.Node.js可以用来做什么？</p>
-<pre><code>- 具有复杂逻辑的动态网站
-- WebSocket服务器
-- 命令行工具
-- 带有图形界面的本地应用程序
-- ......
-</code></pre><p>#11.常见的dos 命令：</p>
-<pre><code>- md    创建目录
-- rmdir(rd)   删除目录，目录内没有文档。
-- echo on a.txt    创建空文件
-- del    删除文件
-- rm 文件名    删除文件
-- cat 文件名   查看文件内容
-- cat &gt; 文件名 向文件中写上内容。
-- dir   查看文件夹
-- cd    进入某个目录
-- md    新建目录
-- rd    删除目录
-- copy   拷贝文件       格式： copy [原目录或文件] [目的目录或文件]
-- del   删除文件       格式： del *.txt  删除后缀为.txt的文件
-</code></pre><p>#12.nvm常用的命令：</p>
-<pre><code>- nvm list 查看当前安装的Node.js所有版本
-- nvm install 版本号 安装指定版本的Node.js
-- nvm uninstall 版本号 卸载指定版本的Node.js
-- nvm use 版本号 选择指定版本的Node.js
-</code></pre><p>#13.Node.js 的两种运行方式：</p>
-<p>  ##1. 命令行方式REPL</p>
-<p>  ##2. 运行文件方式<br>  -第一种是直接在命令里面写，命令里面运行    第二种是在js文件中写，在命令中运行文件名</p>
-<p>#14.全局成员概述</p>
-<p>  ##1. <strong>filename   包含文件名称的全路径    可以打印出来看：console.log(</strong>filename);</p>
-<p>  ##2. <strong>dirname    文件的路径（不包含文件名称）    可以打印出来看：console.log(</strong>dirname);</p>
-<p>  ##3. 定时函数 : 用法与浏览器中的定时函数类似<br>        eg:   ` var timer = setTimeout(function(){<br>                   console.log(123);<br>                },1000);</p>
-<pre><code>setTimeout(function(){
-   clearTimeout(timer);
-},2000); `
-</code></pre><p>  ##4. global   :  在Node.js中没有window对象，但是有一个类似的对象global，访问全局成员的时候可以省略global<br>        eg:  global.console.log(123456);</p>
-<p>  ##5. process.argv   :　<br>      argv是一个数组，默认情况下，前两项数据分别是：Node.js环境的路径；当前执行的js文件的全路径，从第三个参数开始表示命令行参数</p>
-<p>  ##6. process.arch  ： 打印当前系统的架构（64位或者32位）   console.log(process.arch);</p>
-<p>#15. 模块化开发</p>
-<p>##1.传统非模块化开发有如下的缺点：<br>    -(1)、命名冲突<br>    -(2)、文件依赖</p>
-<p>##2.前端标准的模块化规范：<br>    -(1)、AMD - requirejs<br>    -(2)、CMD - seajs</p>
-<p>##3.服务器端的模块化规范： CommonJS - Node.js</p>
-<p> ##4.模块化相关的规则：<br>    -(1)、如何定义模块：一个js文件就是一个模块，模块内部的成员都是相互独立<br>    -(2)、模块成员的导出和引入<br>              —-&gt; 导出模块成员 :<br>                    有两种方式：1.  exports.sum = sum;   —–&gt; 作为一种对象的sum方法导入</p>
-<pre><code>                      2.  module.exports = sum;  ----&gt; 将函数sum赋值给...
-    ----&gt; 引入模块:   var md = require(&apos;./03.js&apos;);
-          在引入模块时，针对不同的导出方式，js引入的内容也有所不同：
-                      对于第一种导出方式 ： 在调用sum 函数时： md.sum(1,2);
-                      对于第二种导出方式 ： 在调用sum 函数时： md(1,2);
-☆ 注意：模块成员的导出最终以module.exports为准
+        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="1-全局对象-Buffer的基本操作"><a href="#1-全局对象-Buffer的基本操作" class="headerlink" title="1. 全局对象 Buffer的基本操作"></a>1. 全局对象 Buffer的基本操作</h3><p>Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;<br>-(1)、构造方法（类）<br>        +—–&gt;实例化buf对象:</p>
+<pre><code>        *   new Buffer(size):
 
-    如果要导出单个的成员或者比较少的成员，一般我们使用exports导出；
-    如果要导出的成员比较多，一般我们使用module.exports的方式
-    这两种方式不能同时使用
+            分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出 RangeError 错误。如果 size 为 0，则创建一个长度为 0 的 Buffer。
+                 eg:let buf = new Buffer(5);
+                    console.log(buf);              // &lt;Buffer 00 00 00 00 00&gt;
 
-    exports与module的关系：
-    module.exports = exports = {};
+        *   new Buffer(string[, encoding]):
+            string &lt; string &gt; 要编码的字符串,
+            encoding &lt; string &gt; string 的字符串编码。 默认： &apos;utf8&apos;,
+            创建一个包含给定字符串 string 的 Buffer。encoding 参数制定 string 的字符串编码。
+                 eg:const buf1 = new Buffer(&apos;this is a tést&apos;);
+                    console.log(buf1.toString());// 输出: this is a tést
+
+        *   类方法：Buffer.alloc(size[, fill[, encoding]])  (常用)
+
+            size &lt;integer&gt; 新建的 Buffer 期望的长度
+            fill &lt;string&gt; | &lt;Buffer&gt; | &lt;integer&gt; 用来预填充新建的 Buffer 的值。 默认: 0
+            encoding &lt;string&gt; 如果 fill 是字符串，则该值是它的字符编码。 默认: &apos;utf8&apos;
+            分配一个大小为 size 字节的新建的 Buffer 。 如果 fill 为 undefined ，则该 Buffer 会用 0 填充。
+            eg: let buf = Buffer.alloc(5);
+                console.log(buf);            // &lt;Buffer 00 00 00 00 00&gt;
 
 
-    eg： 导出成员：        --------------------------&gt;对应的引入后的用法：var md = require(&apos;./03.js&apos;);
-        exports.sum = sum;      ----------------&gt;      md.sum();
-        exports.subtract = subtract;    ---------------&gt;  md.subtract();
+        *   类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
 
-        module.exports = {
-            sum : sum,       ---------------&gt;       md.sum();
-            subtract : subtract,       ---------------&gt;   md.subtract();
-            multiply : multiply,    ---------------&gt;   md.multiply();
-            divide : divide     ---------------&gt;   md.divide();
-        }
-</code></pre><p>#16.第三种模块成员导出方式：global   已经加载的模块会缓存<br>      eg：  var flag = 123;<br>            global.flag = flag;     ——&gt; 吧flag 这个变量放到全局对象里<br>// let flag = 456;<br>// console.log(flag);————&gt; 引入的时候  require(‘./03.js’)；<br>                    我们可以在全局对象里找到我们引入的flag  —&gt;  console.log(global.flag);</p>
-<p>#17.模块文件的后缀3种情况：.js .json .node<br>    上述三种模块的加载优先级(不加文件后缀时的优先级)：.js -&gt; .json -&gt; .node</p>
-<p>#18.es6 中的 声明变量  let  和  const：<br>    -1. let<br>      +(1). let 声明的变量不存在预解析 ,变量只能先声明再使用<br>        ——&gt;  eg: console.log(flag);   // 报错<br>                     let flag = 456;<br>        ——&gt;  eg: let flag = 456;<br>                     console.log(flag); // 456<br>      +(2). let 声明的变量不允许重复（在同一个作用域内）<br>        ——&gt;  eg: let flag = 123;<br>                     let flag = 456;<br>                     console.log(flag);  // 报错<br>      +(3).ES6引入了块级作用域, 在块内部定义的变量，在外部是不可以访问的 ,在块级作用域内部，变量只能先声明再使用<br>        ——&gt;  eg: if(true){<br>                        let flag = 123;<br>                      }   //  这是一个块级作用域 ，外部是不可以访问flag的<br>        ——&gt;  eg: {<br>                           let flag = 111;<br>                          console.log(flag);<br>                      } //  这是一个块级作用域 ，外部是不可以访问flag的<br>        ——&gt;   eg: for (let i = 0; i &lt; 3; i++) {<br>                           // for循环括号中声明的变量只能在循环体中使用<br>                            console.log(i);<br>                      }<br>                      console.log(i);<br>    -2. const<br>      (1).const用来声明常量<br>      (2).const声明的常量不允许重新赋值<br>      (3).const声明的常量必须初始化</p>
-<p>#19. 变量的解构赋值<br>    -1. 变量的解构赋值<br>      —-&gt; eg: var a = 1;<br>                var b = 2;<br>                var c = 3;<br>                var a = 1,b = 2,c = 3;<br>    -2.数组的解构赋值<br>        //let [a,b,c] = [1,2,3];<br>        //let [a,b,c] = [,123,];<br>        let [a=111,b,c] = [,123,];<br>        console.log(a,b,c);  //  111,123,undifined<br>    -3.对象的解构赋值<br>        let {foo,bar} = {foo : ‘hello’,bar : ‘hi’};<br>        let {foo,bar} = {bar : ‘hi’,foo : ‘hello’};<br>        对象属性别名(如果有了别名，那么原来的名字就无效了)<br>        let {foo:abc,bar} = {bar : ‘hi’,foo : ‘nihao’};<br>        console.log(foo,bar);<br>        对象的解构赋值指定默认值<br>        let {foo:abc=’hello’,bar} = {bar : ‘hi’};<br>        console.log(abc,bar);<br>    -4.字符串的解构赋值<br>        let [a,b,c,d,e,length] = “hello”;<br>        console.log(a,b,c,d,e);   // h e l l o<br>        console.log(length);    // undifined<br>        console.log(“hello”.length);  // 5</p>
-<pre><code>let {length} = &quot;hi&quot;;
-console.log(length);   // 2
-</code></pre><p>#20.字符串相关扩展<br>    -1.    includes() 判断字符串中是否包含指定的字串（有的话返回true，否则返回false）<br>               参数一：匹配的字串；参数二：从第几个开始匹配<br>    -2.    startsWith()  判断字符串是否以特定的字串开始<br>    -3.    endsWith()  判断字符串是否以特定的字串结束<br>    -4.    模板字符串<br>          反引号表示模板，模板中的内容可以有格式，通过${}方式填充数据<br>            <code>eg: let obj = {
-                      username : &#39;lisi&#39;,
-                      age : &#39;12&#39;,
-                      gender : &#39;male&#39;
-                  }
-                  let tpl =</code><br>                                <div><br>                                    <span>${obj.username}</span><br>                                    <span>${obj.age}</span><br>                                    <span>${obj.gender}</span><br>                                    <span>${1+1}</span><br>                                    <span>${fn(‘nihao’)}</span><br>                                </div><br>                            <code>;</code></p>
-<p>#21. 函数扩展</p>
-<p>##1、参数默认值<br>       ` eg: function foo(param){<br>              let p = param || ‘hello’;<br>              console.log(p);<br>            }<br>            foo(‘hi’);  // hi</p>
-<pre><code>-----------------------------------&gt;  function foo(param = &apos;nihao&apos;){
-                                          console.log(param);
-                                      }
-                                      foo(&apos;hello kitty&apos;);  // hello kitty `
-</code></pre><p> ##2、参数解构赋值<br>        <figure class="highlight plain"><figcaption><span>foo(&#123;uname='lisi',age=13&#125;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    console.log(uname,age);</div><div class="line">&#125;</div><div class="line">foo(&#123;uname:&apos;zhangsan&apos;,age:15&#125;); //zhangsan,15</div></pre></td></tr></table></figure></p>
-<p>##3、rest参数 （剩余参数）<br>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">eg: function foo(a,b,...param)&#123;</div><div class="line">        console.log(a);  // 1</div><div class="line">        console.log(b);  // 2</div><div class="line">        console.log(param);  // 3 4 5</div><div class="line">    &#125;</div><div class="line">    foo(1,2,3,4,5);</div></pre></td></tr></table></figure></p>
-<p>##4、…扩展运算符<br>        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">eg: function foo(a,b,c,d,e,f,g)&#123;</div><div class="line">        console.log(a + b + c + d + e + f + g);</div><div class="line">    &#125;</div><div class="line">    // foo(1,2,3,4,5);    // 15</div><div class="line">    let arr = [1,2,3,4,5,6,7];</div><div class="line">    // foo.apply(null,arr);</div><div class="line">    foo(...arr);   //...扩展运算符</div><div class="line"></div><div class="line">// 合并数组</div><div class="line">      let arr1 = [1,2,3];</div><div class="line">      let arr2 = [4,5,6];</div><div class="line">      let arr3 = [...arr1,...arr2];</div><div class="line">      console.log(arr3);</div></pre></td></tr></table></figure></p>
-<p>#22.箭头函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">eg: function foo()&#123;</div><div class="line">      console.log(&apos;hello&apos;);</div><div class="line">  &#125;</div><div class="line">  foo();</div><div class="line"></div><div class="line">     let foo = () =&gt; console.log(&apos;hello&apos;);</div><div class="line">          foo();</div></pre></td></tr></table></figure></p>
-<pre><code>-1.有一个参数时： function foo(v){
-                  return v;
-                }
-                   let foo = v =&gt; v;
-                            let ret = foo(111);
+            arrayBuffer &lt;ArrayBuffer&gt; 一个 ArrayBuffer，或一个 TypedArray 的 .buffer 属性。
+            byteOffset &lt;integer&gt; 开始拷贝的索引。默认为 0。
+            length &lt;integer&gt; 拷贝的字节数。默认为 arrayBuffer.length - byteOffset。
+            该方法将创建一个 ArrayBuffer 的视图，而不会复制底层内存。例如，当传入一个 TypedArray 实例的 .buffer 属性的引用时，这个新建的 Buffer 会像 TypedArray 那样共享同一分配的内存。
+            let buf = Buffer.from(&apos;hello&apos;,&apos;utf8&apos;);
+            console.log(buf);
 
--2.多个参数必须用小括号包住:
-      let foo = (a,b) =&gt; {let c = 1; console.log(a + b + c);}
-      foo(1,2);
--3.箭头函数的注意事项：
-      1、箭头函数中this取决于函数的定义，而不是调用
-      function foo(){
-          // 使用call调用foo时，这里的this其实就是call的第一个参数
-          // console.log(this);
-          setTimeout(()=&gt;{
-              console.log(this.num);
-          },100);
-      }
-      foo.call({num:1});
-      ----------------------------------
-      2、箭头函数不可以new
-      let foo = () =&gt; { this.num = 123;};
-      new foo();
-      ------------------------------------
-      3、箭头函数不可以使用arguments获取参数列表，可以使用rest参数代替
-      let foo = (a,b) =&gt; {
-          // console.log(a,b);
-          console.log(arguments);  //这种方式获取不到实参列表
-      }
-      foo(123,456);
-</code></pre><p>#23. 类与继承<br>    -1. 类： 关键字： class<br>        eg： class Animal{<br>                  // 静态方法(静态方法只能通过类名调用，不可以使用实例对象调用) 关键字：  static<br>                  static showInfo(){<br>                      console.log(‘hi’);<br>                  }</p>
-<pre><code>              // 构造函数
-              constructor(name){
-                  this.name = name;
-              }                      // constructor 只能存属性
+        *   类方法：Buffer.from(array)
 
-              showName(){       // 方法
-                  console.log(this.name);
-              }
-          }
-          // let a = new Animal(&apos;spike&apos;);
-          // a.showName();
-          // a.showInfo();
-          // Animal.showInfo();  -------&gt;  静态方法调用,只能通过类名调用，不可以使用实例对象调用
+            通过一个八位字节的 array 创建一个新的 Buffer 。
+            let buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
+            console.log(buf.toString());
 
--2.类的继承   extends
-  class Dog extends Animal{
-      constructor(name,color){
-          super(name);        //super用来调用父类
-          this.color = color;
-      }
+-(2)、静态方法
+            类方法：Buffer.isEncoding(encoding)
 
-      showColor(){    // 方法
-          console.log(this.color);
-      }
-  }
+            如果 encoding 是一个支持的字符编码则返回 true，否则返回 false 。
+            encoding &lt;string&gt; 一个要检查的字符编码名称
+            返回: &lt;boolean&gt;
 
-  let d = new Dog(&apos;doudou&apos;,&apos;yellow&apos;);
-  d.showName();
-  d.showColor();
-  // d.showInfo();
-  Dog.showInfo();
+            eg: console.log(Buffer.isEncoding(&apos;utf8&apos;));  // true
+                console.log(Buffer.isEncoding(&apos;gbk&apos;));   // false
+
+            类方法：Buffer.isBuffer(obj)
+
+            obj &lt;Object&gt;
+            返回: &lt;boolean&gt;
+            如果 obj 是一个 Buffer 则返回 true ，否则返回 false 。
+            eg: let buf = Buffer.from(&apos;hello&apos;);
+                console.log(Buffer.isBuffer(buf));  // true
+                console.log(Buffer.isBuffer({}));   // false
+
+            类方法：Buffer.byteLength(string[, encoding])
+
+            返回一个字符串的实际字节长度。 这与 String.prototype.length 不同，因为那返回字符串的字符数。
+            string: &lt;string&gt; | &lt;Buffer&gt; | &lt;TypedArray&gt; | &lt;DataView&gt; | &lt;ArrayBuffer&gt; 要计算长度的值
+            encoding :&lt;string&gt; 如果 string 是字符串，则这是它的字符编码。 默认: &apos;utf8&apos;
+            返回: &lt;integer&gt; string 包含的字节数
+
+            eg: let buf = Buffer.from(&apos;中国&apos;,&apos;ascii&apos;);
+                console.log(Buffer.byteLength(buf));   // 2
+                console.log(buf.toString());   // 乱码
+            eg: let buf = Buffer.from(&apos;中国&apos;,&apos;utf8&apos;);
+                console.log(Buffer.byteLength(buf));   // 2
+                console.log(buf.toString());   // 中国
+
+            类方法：Buffer.concat(list[, totalLength])
+
+            返回一个合并了 list 中所有 Buffer 实例的新建的 Buffer 。
+            list &lt;Array&gt; 要合并的 Buffer 或 Uint8Array 实例的数组
+            totalLength &lt;integer&gt; 合并时 list 中 Buffer 实例的总长度
+            返回: &lt;Buffer&gt;
+
+            eg：let buf1 = Buffer.alloc(3);
+                let buf2 = Buffer.alloc(5);
+                let buf3 = Buffer.concat([buf1,buf2]);
+                console.log(Buffer.byteLength(buf3));   // 8
+
+            eg: let buf1 = Buffer.from(&apos;tom&apos;);
+                let buf2 = Buffer.from(&apos;jerry&apos;);
+                let buf3 = Buffer.concat([buf1,buf2]);
+                console.log(Buffer.byteLength(buf3));   // 8
+                console.log(buf3.toString());           // tomjerry
+
+-(3)、实例方法
+
+            buf.write(string[, offset[, length]][, encoding]):
+
+            根据 encoding 的字符编码写入 string 到 buf 中的 offset 位置。 length 参数是写入的字节数。 如果 buf 没有足够的空间保存整个字符串，则只会写入 string 的一部分。 只部分解码的字符不会被写入。
+            string &lt;string&gt; 要写入 buf 的字符串
+            offset &lt;integer&gt; 开始写入 string 的位置。默认: 0
+            length &lt;integer&gt; 要写入的字节数。默认: buf.length - offset
+            encoding &lt;string&gt; string 的字符编码。默认: &apos;utf8&apos;
+            返回: &lt;integer&gt; 写入的字节数
+
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.alloc(5);</div><div class="line">    buf.write(<span class="string">'hello'</span>,2,2);  //从索引2开始写入，写入2个</div><div class="line">    console.log(buf);      //  &lt;Buffer 00 00 68 65 00&gt;</div><div class="line">    console.log(buf.toString()); //he</div></pre></td></tr></table></figure>
+
+            buf.slice([start[, end]])
+            返回一个指向相同原始内存的新建的 Buffer，但做了偏移且通过 start 和 end 索引进行裁剪。
+            start &lt;integer&gt; 新建的 Buffer 开始的位置。 默认: 0
+            end &lt;integer&gt; 新建的 Buffer 结束的位置（不包含）。 默认: buf.length
+            返回: &lt;Buffer&gt;
+
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    <span class="built_in">let</span> buf1 = buf.slice(2,3);    // 从索引2裁剪到索引3</div><div class="line">    console.log(buf === buf1);//<span class="literal">false</span></div><div class="line">    console.log(buf1.toString());  // l</div></pre></td></tr></table></figure>
+
+            buf.toJSON()
+            toJSON方法不需要显式调用，当JSON.stringify方法调用的时候会自动调用toJSON方法
+            返回 buf 的 JSON 格式。 当字符串化一个 Buffer 实例时，JSON.stringify() 会隐式地调用该函数。
+
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);</div><div class="line">    const json = JSON.stringify(buf);</div><div class="line">    console.log(json);    // &#123;<span class="string">"type"</span>:<span class="string">"Buffer"</span>,<span class="string">"data"</span>:[1,2,3,4,5]&#125;</div></pre></td></tr></table></figure>
+
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: const buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    const json = JSON.stringify(buf);</div><div class="line">    console.log(json);       // &#123;<span class="string">"type"</span>:<span class="string">"Buffer"</span>,<span class="string">"data"</span>:[104,101,108,108,111]&#125; (十进制代码)</div></pre></td></tr></table></figure>
+</code></pre><h3 id="2-path-路径操作"><a href="#2-path-路径操作" class="headerlink" title="2. path 路径操作"></a>2. path 路径操作</h3><p>进行路径操作之前要对path 进行引入 ：const path = require(‘path’);</p>
+<p>在linux 系统中 路径 只能用 / 表示 ；<br>在windows 系统中 可以用 / 和 \ 都可以，但是 \ 代表转义字符，所以我们也可以用 \ 表示</p>
+<pre><code>-1.path.basename(path[, ext])  ： 获取路径的最后一部分
+    path &lt;string&gt;
+    ext &lt;string&gt; 可选的文件扩展名
+    返回: &lt;string&gt;
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>));  //  quux.html</div><div class="line">    console.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>, <span class="string">'.html'</span>));  //quux</div></pre></td></tr></table></figure>
+
+-2.path.dirname(path)  :获取路径
+    path.dirname() 方法返回一个 path 的目录名
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(__dirname);          //// 打印的是当前文件所在的目录，不包括文件名</div><div class="line">    console.log(path.dirname(<span class="string">'/abc/qqq/www/abc'</span>));  ///abc/qqq/www</div></pre></td></tr></table></figure>
+
+-3.path.extname(path) :获取扩展名称
+    path.extname() 方法返回 path 的扩展名
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg:console.log(path.extname(<span class="string">'index.html'</span>));  // .html</div></pre></td></tr></table></figure>
+
+-4.路径的格式化处理
+    path.format(pathObject)  方法会从一个对象返回一个路径字符串。 obj-&gt;string  与 path.parse() 相反。
+    path.parse() path.parse() 方法返回一个对象，对象的属性表示 path 的元素。 string-&gt;obj
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">eg:</div><div class="line">    <span class="built_in">let</span> obj = path.parse(__filename);</div><div class="line">    console.log(obj);</div><div class="line">    console.log(obj.base);</div><div class="line">    /*&#123; root: <span class="string">'G:\\'</span>,</div><div class="line">      dir: <span class="string">'G:\\传智播客\\代码\\就业班\\nodejs\\2'</span>,</div><div class="line">      base: <span class="string">'04.js'</span>,</div><div class="line">      ext: <span class="string">'.js'</span>,</div><div class="line">      name: <span class="string">'04'</span> &#125;*/</div><div class="line">    //04.js</div></pre></td></tr></table></figure>
+
+-5.path.isAbsolute(path) :判断是否为绝对路径
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.isAbsolute(<span class="string">'/foo/bar'</span>));  // <span class="literal">true</span></div><div class="line">    console.log(path.isAbsolute(<span class="string">'C:/foo/..'</span>));  //<span class="literal">true</span></div><div class="line">    path.isAbsolute(<span class="string">'qux/'</span>);     // <span class="literal">false</span></div><div class="line">    path.isAbsolute(<span class="string">'.'</span>);        // <span class="literal">false</span></div></pre></td></tr></table></figure>
+
+-6.path.join([...paths]) :拼接路径（..表示上层路径；.表示当前路径）,在连接路径的时候会格式化路径
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.join(<span class="string">'/foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz/asdf'</span>, <span class="string">'quux'</span>, <span class="string">'../../'</span>)); //\foo\bar\baz\</div></pre></td></tr></table></figure>
+
+-7.path.normalize(path) ：规范化路径
+path.normalize() 方法会规范化给定的 path，并解析 &apos;..&apos; 和 &apos;.&apos; 片段。
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：console.log(path.normalize(<span class="string">'/foo/bar//baz/asdf/quux/..'</span>));  //  \foo\bar\baz\asdf</div><div class="line">    console.log(path.normalize(<span class="string">'C:\\temp\\\\foo\\bar\\..\\'</span>));  //  C:\temp\foo\</div></pre></td></tr></table></figure>
+
+-8.path.relative(from, to) 两个参数，计算两个路径的相对路径
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：console.log(path.relative(<span class="string">'/data/orandea/test/aaa'</span>, <span class="string">'/data/orandea/impl/bbb'</span>)); //  ..\..\impl\bbb</div><div class="line">    console.log(path.relative(<span class="string">'C:\\orandea\\test\\aaa'</span>, <span class="string">'C:\\orandea\\impl\\bbb'</span>)); // ..\..\impl\bbb</div></pre></td></tr></table></figure>
+
+-9.path.resolve([...paths])  :path.resolve() 方法会把一个路径或路径片段的序列解析为一个绝对路径。
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.resolve(<span class="string">'wwwroot'</span>, <span class="string">'static_files/png/'</span>, <span class="string">'../gif/image.gif'</span>));</div><div class="line">// G:\传智播客\代码\就业班\nodejs\2\wwwroot\static_files\gif\image.gif</div></pre></td></tr></table></figure>
+
+-10. 两个特殊属性
+path.delimiter  :    环境变量分隔符(windows中使用; linux中使用:)
+path.sep      :   表示路径分隔符（windows是\ Linux是/）
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.delimiter);//  : 或 ;</div><div class="line">    console.log(path.sep);//  \   或   /</div></pre></td></tr></table></figure>
 </code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-nodejs第四天" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/07/27/nodejs第四天/" class="article-date">
-      <time datetime="2017-07-27T02:02:11.914Z" itemprop="datePublished">2017-07-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="1-npm-命令行"><a href="#1-npm-命令行" class="headerlink" title="1.npm 命令行"></a>1.npm 命令行</h1><ul>
-<li><code>npm docs art-template</code> 查看art-template 文档<br>-</li>
-</ul>
-
       
     </div>
     
