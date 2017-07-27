@@ -289,48 +289,49 @@
       
           
         <h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><h2 id="1-全局对象-Buffer的基本操作"><a href="#1-全局对象-Buffer的基本操作" class="headerlink" title="1. 全局对象 Buffer的基本操作"></a>1. 全局对象 Buffer的基本操作</h2><p>Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;</p>
-<p>###(1)、构造方法（类）<br>        -实例化buf对象:</p>
-<pre><code>+   new Buffer(size):
+<h3 id="1-、构造方法（类）"><a href="#1-、构造方法（类）" class="headerlink" title="(1)、构造方法（类）"></a>(1)、构造方法（类）</h3><pre><code>- 实例化buf对象:
+    + new Buffer(size):
 
-    分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出 RangeError 错误。如果 size 为 0，则创建一个长度为 0 的 Buffer。
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:<span class="built_in">let</span> buf = new Buffer(5);</div><div class="line">   console.log(buf);              // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
+        分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出 RangeError 错误。如果 size 为 0，则创建一个长度为 0 的 Buffer。
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:<span class="built_in">let</span> buf = new Buffer(5);</div><div class="line">   console.log(buf);              // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
 
-+   new Buffer(string[, encoding]):
-    string &lt; string &gt; 要编码的字符串,
-    encoding &lt; string &gt; string 的字符串编码。 默认： &apos;utf8&apos;,
-    创建一个包含给定字符串 string 的 Buffer。encoding 参数制定 string 的字符串编码。
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:const buf1 = new Buffer(<span class="string">'this is a tést'</span>);</div><div class="line">   console.log(buf1.toString());// 输出: this is a tést</div></pre></td></tr></table></figure>
+    + new Buffer(string[, encoding]):
+        string &lt; string &gt; 要编码的字符串,
+        encoding &lt; string &gt; string 的字符串编码。 默认： &apos;utf8&apos;,
+        创建一个包含给定字符串 string 的 Buffer。encoding 参数制定 string 的字符串编码。
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:const buf1 = new Buffer(<span class="string">'this is a tést'</span>);</div><div class="line">   console.log(buf1.toString());// 输出: this is a tést</div></pre></td></tr></table></figure>
 
-+   类方法：Buffer.alloc(size[, fill[, encoding]])  (常用)
+    + 类方法：Buffer.alloc(size[, fill[, encoding]])  (常用)
 
-    size &lt;integer&gt; 新建的 Buffer 期望的长度
-    fill &lt;string&gt; | &lt;Buffer&gt; | &lt;integer&gt; 用来预填充新建的 Buffer 的值。 默认: 0
-    encoding &lt;string&gt; 如果 fill 是字符串，则该值是它的字符编码。 默认: &apos;utf8&apos;
-    分配一个大小为 size 字节的新建的 Buffer 。 如果 fill 为 undefined ，则该 Buffer 会用 0 填充。
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.alloc(5);</div><div class="line">    console.log(buf);            // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
+        size &lt;integer&gt; 新建的 Buffer 期望的长度
+        fill &lt;string&gt; | &lt;Buffer&gt; | &lt;integer&gt; 用来预填充新建的 Buffer 的值。 默认: 0
+        encoding &lt;string&gt; 如果 fill 是字符串，则该值是它的字符编码。 默认: &apos;utf8&apos;
+        分配一个大小为 size 字节的新建的 Buffer 。 如果 fill 为 undefined ，则该 Buffer 会用 0 填充。
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.alloc(5);</div><div class="line">    console.log(buf);            // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
 
-+   类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
+    + 类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
 
-    arrayBuffer &lt;ArrayBuffer&gt; 一个 ArrayBuffer，或一个 TypedArray 的 .buffer 属性。
-    byteOffset &lt;integer&gt; 开始拷贝的索引。默认为 0。
-    length &lt;integer&gt; 拷贝的字节数。默认为 arrayBuffer.length - byteOffset。
-    该方法将创建一个 ArrayBuffer 的视图，而不会复制底层内存。例如，当传入一个 TypedArray 实例的 .buffer 属性的引用时，这个新建的 Buffer 会像 TypedArray 那样共享同一分配的内存。
-    let buf = Buffer.from(&apos;hello&apos;,&apos;utf8&apos;);
-    console.log(buf);
+        arrayBuffer &lt;ArrayBuffer&gt; 一个 ArrayBuffer，或一个 TypedArray 的 .buffer 属性。
+        byteOffset &lt;integer&gt; 开始拷贝的索引。默认为 0。
+        length &lt;integer&gt; 拷贝的字节数。默认为 arrayBuffer.length - byteOffset。
+        该方法将创建一个 ArrayBuffer 的视图，而不会复制底层内存。例如，当传入一个 TypedArray 实例的 .buffer 属性的引用时，这个新建的 Buffer 会像 TypedArray 那样共享同一分配的内存。
+        let buf = Buffer.from(&apos;hello&apos;,&apos;utf8&apos;);
+        console.log(buf);
 
-+   类方法：Buffer.from(array)
+    + 类方法：Buffer.from(array)
 
-    通过一个八位字节的 array 创建一个新的 Buffer 。
-    let buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
-    console.log(buf.toString());
-</code></pre><p>###(2)、静态方法<br>        -类方法：Buffer.isEncoding(encoding)</p>
-<pre><code>            如果 encoding 是一个支持的字符编码则返回 true，否则返回 false 。
+        通过一个八位字节的 array 创建一个新的 Buffer 。
+        let buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
+        console.log(buf.toString());
+</code></pre><h3 id="2-、静态方法"><a href="#2-、静态方法" class="headerlink" title="(2)、静态方法"></a>(2)、静态方法</h3><pre><code>    - 类方法：Buffer.isEncoding(encoding)
+
+            如果 encoding 是一个支持的字符编码则返回 true，否则返回 false 。
             encoding &lt;string&gt; 一个要检查的字符编码名称
             返回: &lt;boolean&gt;
 
             <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(Buffer.isEncoding(<span class="string">'utf8'</span>));  // <span class="literal">true</span></div><div class="line">    console.log(Buffer.isEncoding(<span class="string">'gbk'</span>));   // <span class="literal">false</span></div></pre></td></tr></table></figure>
 
-    -类方法：Buffer.isBuffer(obj)
+    - 类方法：Buffer.isBuffer(obj)
 
             obj &lt;Object&gt;
             返回: &lt;boolean&gt;
@@ -338,7 +339,7 @@
 
             <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    console.log(Buffer.isBuffer(buf));  // <span class="literal">true</span></div><div class="line">    console.log(Buffer.isBuffer(&#123;&#125;));   // <span class="literal">false</span></div></pre></td></tr></table></figure>
 
-    -类方法：Buffer.byteLength(string[, encoding])
+    - 类方法：Buffer.byteLength(string[, encoding])
 
             返回一个字符串的实际字节长度。 这与 String.prototype.length 不同，因为那返回字符串的字符数。
             string: &lt;string&gt; | &lt;Buffer&gt; | &lt;TypedArray&gt; | &lt;DataView&gt; | &lt;ArrayBuffer&gt; 要计算长度的值
@@ -349,7 +350,7 @@
 
             <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.from(<span class="string">'中国'</span>,<span class="string">'utf8'</span>);</div><div class="line">    console.log(Buffer.byteLength(buf));   // 2</div><div class="line">    console.log(buf.toString());   // 中国</div></pre></td></tr></table></figure>
 
-    -类方法：Buffer.concat(list[, totalLength])
+    - 类方法：Buffer.concat(list[, totalLength])
 
             返回一个合并了 list 中所有 Buffer 实例的新建的 Buffer 。
             list &lt;Array&gt; 要合并的 Buffer 或 Uint8Array 实例的数组
@@ -360,9 +361,9 @@
 
             <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf1 = Buffer.from(<span class="string">'tom'</span>);</div><div class="line">    <span class="built_in">let</span> buf2 = Buffer.from(<span class="string">'jerry'</span>);</div><div class="line">    <span class="built_in">let</span> buf3 = Buffer.concat([buf1,buf2]);</div><div class="line">    console.log(Buffer.byteLength(buf3));   // 8</div><div class="line">    console.log(buf3.toString());           // tomjerry</div></pre></td></tr></table></figure>
 
-###(3)、实例方法
+### (3)、实例方法
 
-        -buf.write(string[, offset[, length]][, encoding]):
+        - buf.write(string[, offset[, length]][, encoding]):
 
             根据 encoding 的字符编码写入 string 到 buf 中的 offset 位置。 length 参数是写入的字节数。 如果 buf 没有足够的空间保存整个字符串，则只会写入 string 的一部分。 只部分解码的字符不会被写入。
             string &lt;string&gt; 要写入 buf 的字符串
@@ -373,7 +374,7 @@
 
             <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.alloc(5);</div><div class="line">    buf.write(<span class="string">'hello'</span>,2,2);  //从索引2开始写入，写入2个</div><div class="line">    console.log(buf);      //  &lt;Buffer 00 00 68 65 00&gt;</div><div class="line">    console.log(buf.toString()); //he</div></pre></td></tr></table></figure>
 
-        -buf.slice([start[, end]])
+        - buf.slice([start[, end]])
             返回一个指向相同原始内存的新建的 Buffer，但做了偏移且通过 start 和 end 索引进行裁剪。
             start &lt;integer&gt; 新建的 Buffer 开始的位置。 默认: 0
             end &lt;integer&gt; 新建的 Buffer 结束的位置（不包含）。 默认: buf.length
@@ -381,7 +382,7 @@
 
         <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    <span class="built_in">let</span> buf1 = buf.slice(2,3);    // 从索引2裁剪到索引3</div><div class="line">    console.log(buf === buf1);//<span class="literal">false</span></div><div class="line">    console.log(buf1.toString());  // l</div></pre></td></tr></table></figure>
 
-        -buf.toJSON()
+        - buf.toJSON()
             toJSON方法不需要显式调用，当JSON.stringify方法调用的时候会自动调用toJSON方法
             返回 buf 的 JSON 格式。 当字符串化一个 Buffer 实例时，JSON.stringify() 会隐式地调用该函数。
 
@@ -390,57 +391,60 @@
             <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: const buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    const json = JSON.stringify(buf);</div><div class="line">    console.log(json);       // &#123;<span class="string">"type"</span>:<span class="string">"Buffer"</span>,<span class="string">"data"</span>:[104,101,108,108,111]&#125; (十进制代码)</div></pre></td></tr></table></figure>
 </code></pre><h2 id="2-path-路径操作"><a href="#2-path-路径操作" class="headerlink" title="2. path 路径操作"></a>2. path 路径操作</h2><p>进行路径操作之前要对path 进行引入 ：const path = require(‘path’);</p>
 <p>在linux 系统中 路径 只能用 / 表示 ；<br>在windows 系统中 可以用 / 和 \ 都可以，但是 \ 代表转义字符，所以我们也可以用 \ 表示</p>
-<pre><code>###1.path.basename(path[, ext])  ： 获取路径的最后一部分
+<pre><code>### 1.path.basename(path[, ext])  ： 获取路径的最后一部分
         path &lt;string&gt;
         ext &lt;string&gt; 可选的文件扩展名
         返回: &lt;string&gt;
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>));  //  quux.html</div><div class="line">    console.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>, <span class="string">'.html'</span>));  //quux</div></pre></td></tr></table></figure>
 
-###2.path.dirname(path)  :获取路径
+### 2.path.dirname(path)  :获取路径
         path.dirname() 方法返回一个 path 的目录名
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(__dirname);          //// 打印的是当前文件所在的目录，不包括文件名</div><div class="line">    console.log(path.dirname(<span class="string">'/abc/qqq/www/abc'</span>));  ///abc/qqq/www</div></pre></td></tr></table></figure>
 
-###3.path.extname(path) :获取扩展名称
+### 3.path.extname(path) :获取扩展名称
         path.extname() 方法返回 path 的扩展名
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg:console.log(path.extname(<span class="string">'index.html'</span>));  // .html</div></pre></td></tr></table></figure>
 
-###4.路径的格式化处理
+### 4.路径的格式化处理
         path.format(pathObject)  方法会从一个对象返回一个路径字符串。 obj-&gt;string  与 path.parse() 相反。
         path.parse() path.parse() 方法返回一个对象，对象的属性表示 path 的元素。 string-&gt;obj
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">eg:</div><div class="line">    <span class="built_in">let</span> obj = path.parse(__filename);</div><div class="line">    console.log(obj);</div><div class="line">    console.log(obj.base);</div><div class="line">    /*&#123; root: <span class="string">'G:\\'</span>,</div><div class="line">      dir: <span class="string">'G:\\传智播客\\代码\\就业班\\nodejs\\2'</span>,</div><div class="line">      base: <span class="string">'04.js'</span>,</div><div class="line">      ext: <span class="string">'.js'</span>,</div><div class="line">      name: <span class="string">'04'</span> &#125;*/</div><div class="line">    //04.js</div></pre></td></tr></table></figure>
 
-###5.path.isAbsolute(path) :判断是否为绝对路径
+### 5.path.isAbsolute(path) :判断是否为绝对路径
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.isAbsolute(<span class="string">'/foo/bar'</span>));  // <span class="literal">true</span></div><div class="line">    console.log(path.isAbsolute(<span class="string">'C:/foo/..'</span>));  //<span class="literal">true</span></div><div class="line">    path.isAbsolute(<span class="string">'qux/'</span>);     // <span class="literal">false</span></div><div class="line">    path.isAbsolute(<span class="string">'.'</span>);        // <span class="literal">false</span></div></pre></td></tr></table></figure>
 
-###6.path.join([...paths]) :拼接路径（..表示上层路径；.表示当前路径）,在连接路径的时候会格式化路径
+### 6.path.join([...paths]) :拼接路径（..表示上层路径；.表示当前路径）,在连接路径的时候会格式化路径
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.join(<span class="string">'/foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz/asdf'</span>, <span class="string">'quux'</span>, <span class="string">'../../'</span>)); //\foo\bar\baz\</div></pre></td></tr></table></figure>
 
-###7.path.normalize(path) ：规范化路径
+### 7.path.normalize(path) ：规范化路径
     path.normalize() 方法会规范化给定的 path，并解析 &apos;..&apos; 和 &apos;.&apos; 片段。
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：console.log(path.normalize(<span class="string">'/foo/bar//baz/asdf/quux/..'</span>));  //  \foo\bar\baz\asdf</div><div class="line">    console.log(path.normalize(<span class="string">'C:\\temp\\\\foo\\bar\\..\\'</span>));  //  C:\temp\foo\</div></pre></td></tr></table></figure>
 
-###8.path.relative(from, to) 两个参数，计算两个路径的相对路径
+### 8.path.relative(from, to) 两个参数，计算两个路径的相对路径
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：console.log(path.relative(<span class="string">'/data/orandea/test/aaa'</span>, <span class="string">'/data/orandea/impl/bbb'</span>)); //  ..\..\impl\bbb</div><div class="line">    console.log(path.relative(<span class="string">'C:\\orandea\\test\\aaa'</span>, <span class="string">'C:\\orandea\\impl\\bbb'</span>)); // ..\..\impl\bbb</div></pre></td></tr></table></figure>
 
-###9.path.resolve([...paths])  :path.resolve() 方法会把一个路径或路径片段的序列解析为一个绝对路径。
+### 9.path.resolve([...paths])  :path.resolve() 方法会把一个路径或路径片段的序列解析为一个绝对路径。
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.resolve(<span class="string">'wwwroot'</span>, <span class="string">'static_files/png/'</span>, <span class="string">'../gif/image.gif'</span>));</div><div class="line">// G:\传智播客\代码\就业班\nodejs\2\wwwroot\static_files\gif\image.gif</div></pre></td></tr></table></figure>
 
-###10. 两个特殊属性
+### 10. 两个特殊属性
     path.delimiter  :    环境变量分隔符(windows中使用; linux中使用:)
     path.sep      :   表示路径分隔符（windows是\ Linux是/）
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.delimiter);//  : 或 ;</div><div class="line">    console.log(path.sep);//  \   或   /</div></pre></td></tr></table></figure>
-</code></pre><p>##3. 异步I/O input/output<br>    -1、文件操作<br>    -2、网络操作</p>
-<pre><code>在浏览器中也存在异步操作：
+</code></pre><h2 id="3-异步I-O-input-output"><a href="#3-异步I-O-input-output" class="headerlink" title="3. 异步I/O input/output"></a>3. 异步I/O input/output</h2><pre><code>-1、文件操作
+-2、网络操作
+
+
+在浏览器中也存在异步操作：
     -1、定时任务
     -2、事件处理
     -3、Ajax回调处理
@@ -452,7 +456,7 @@ Node.js中异步执行的任务：  (基于回调函数的编码风格)
     -1、文件I/O
     -2、网络I/O
 
-###1.文件操作-查看文件状态
+### 1.文件操作-查看文件状态
     fs ：File System(文件系统)
     首先要引入fs  ; const fs = require(&apos;fs&apos;);
     -异步操作：
@@ -482,7 +486,7 @@ Node.js中异步执行的任务：  (基于回调函数的编码风格)
 
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> ret = fs.statSync(<span class="string">'./data.txt'</span>);</div><div class="line">    console.log(ret);</div><div class="line">    console.log(2);</div></pre></td></tr></table></figure>
 
-###2.读文件操作
+### 2.读文件操作
     首先引入我们需要的：
     <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const fs = require(<span class="string">'fs'</span>);</div><div class="line">const path = require(<span class="string">'path'</span>);</div></pre></td></tr></table></figure>
 
