@@ -277,30 +277,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="nodejs-案例思路分析"><a href="#nodejs-案例思路分析" class="headerlink" title="nodejs 案例思路分析"></a>nodejs 案例思路分析</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所以依赖的包"><a href="#3-安装所以依赖的包" class="headerlink" title="3.安装所以依赖的包"></a>3.安装所以依赖的包</h3><pre><code>- 1.express 
+              <h2 id="nodejs-案例思路分析"><a href="#nodejs-案例思路分析" class="headerlink" title="nodejs 案例思路分析"></a>nodejs 案例思路分析</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所以依赖的包"><a href="#3-安装所以依赖的包" class="headerlink" title="3.安装所以依赖的包"></a>3.安装所以依赖的包</h3><pre><code>- 1.express
 - 2.art-template
 - 3.express-art-template
 - 4.body-parser
-</code></pre><h3 id="4-环境准备好之后，准备入口文件"><a href="#4-环境准备好之后，准备入口文件" class="headerlink" title="4.环境准备好之后，准备入口文件"></a>4.环境准备好之后，准备入口文件</h3><h3 id="5-加载项目所依赖的包"><a href="#5-加载项目所依赖的包" class="headerlink" title="5.加载项目所依赖的包"></a>5.加载项目所依赖的包</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const express = require(&apos;express&apos;);</div><div class="line">const path = require(&apos;path&apos;);</div><div class="line">const router = require(&apos;./router.js&apos;);</div><div class="line">const template = require(&apos;art-template&apos;);</div><div class="line">const bodyParser = require(&apos;body-parser&apos;);</div><div class="line">const app = express();</div></pre></td></tr></table></figure>
-</code></pre><h3 id="6-设置模板引擎："><a href="#6-设置模板引擎：" class="headerlink" title="6.设置模板引擎："></a>6.设置模板引擎：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 设置模板引擎</div><div class="line">// 设置模板的路径,这里用到path，我们需要先引入path，再设置</div><div class="line">// 而且我们的模板默认是放到views文件夹下的，所以我们需要先建一个文件夹放模板文件</div><div class="line">app.set(&apos;views&apos;,path.join(__dirname,&apos;views&apos;));</div><div class="line">// 设置模板引擎</div><div class="line">app.set(&apos;view engine&apos;,&apos;art&apos;);</div><div class="line">// 使express兼容art-template模板引擎</div><div class="line">app.engine(&apos;art&apos;, require(&apos;express-art-template&apos;));</div></pre></td></tr></table></figure>
-<h3 id="7-处理请求参数："><a href="#7-处理请求参数：" class="headerlink" title="7.处理请求参数："></a>7.处理请求参数：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 处理请求参数</div><div class="line">// 挂载参数处理中间件（post）</div><div class="line">app.use(bodyParser.urlencoded(&#123; extended: false &#125;));</div><div class="line">// 处理json格式的参数</div><div class="line">app.use(bodyParser.json());</div></pre></td></tr></table></figure>
-<h3 id="8-启动服务器功能"><a href="#8-启动服务器功能" class="headerlink" title="8.启动服务器功能"></a>8.启动服务器功能</h3><pre><code>- 1.配置路由
-+ 一般单独的创建一个router文件，在入口文件上引入改文件
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//创建一个router.js文件，在入口文件中引入</div><div class="line">const router = require(&apos;./router.js&apos;);</div></pre></td></tr></table></figure>
-
-+ 再配置路由
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 启动服务器功能</div><div class="line">// 配置路由</div><div class="line">app.use(router);</div></pre></td></tr></table></figure>
-
-- 2.监听端口
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 监听端口</div><div class="line">app.listen(3000,()=&gt;&#123;</div><div class="line">    console.log(&apos;running...&apos;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</code></pre><h3 id="9-创建一个业务模块-service-js-，处理具体的操作"><a href="#9-创建一个业务模块-service-js-，处理具体的操作" class="headerlink" title="9.创建一个业务模块 service.js ，处理具体的操作"></a>9.创建一个业务模块 service.js ，处理具体的操作</h3><h3 id="10-在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用"><a href="#10-在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用" class="headerlink" title="10.在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用"></a>10.在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">    路由模块</div><div class="line">*/</div><div class="line"></div><div class="line">const express = require(&apos;express&apos;);</div><div class="line">const router = express.Router();</div><div class="line">const service = require(&apos;./service.js&apos;);</div><div class="line"></div><div class="line">// 路由处理</div><div class="line">.........</div><div class="line"></div><div class="line">module.exports = router;</div></pre></td></tr></table></figure>
-<h3 id="11-在views文件夹里创建一个主页面（art后缀）-创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里"><a href="#11-在views文件夹里创建一个主页面（art后缀）-创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里" class="headerlink" title="11.在views文件夹里创建一个主页面（art后缀）,创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里"></a>11.在views文件夹里创建一个主页面（art后缀）,创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里</h3><h3 id="12-在入口文件里启动静态资源服务器"><a href="#12-在入口文件里启动静态资源服务器" class="headerlink" title="12.在入口文件里启动静态资源服务器"></a>12.在入口文件里启动静态资源服务器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 启动静态资源服务</div><div class="line">app.use(&apos;/www&apos;,express.static(&apos;public&apos;));</div></pre></td></tr></table></figure>
-<h3 id="13-在业务模块-service-js-渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下："><a href="#13-在业务模块-service-js-渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下：" class="headerlink" title="13.在业务模块 service.js 渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下："></a>13.在业务模块 service.js 渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">    业务模块 service.js</div><div class="line">*/</div><div class="line">const data = require(&apos;./data.json&apos;);</div><div class="line">const path = require(&apos;path&apos;);</div><div class="line">const fs = require(&apos;fs&apos;);</div><div class="line"></div><div class="line">// 自动生成图书编号（自增）</div><div class="line">let maxBookCode = ()=&gt;&#123;</div><div class="line">    let arr = [];</div><div class="line">    data.forEach((item)=&gt;&#123;</div><div class="line">        arr.push(item.id);</div><div class="line">    &#125;);</div><div class="line">    return Math.max.apply(null,arr);</div><div class="line">&#125;</div><div class="line">// 把内存数据写入文件</div><div class="line">let writeDataToFile = (res) =&gt; &#123;</div><div class="line">    fs.writeFile(path.join(__dirname,&apos;data.json&apos;),JSON.stringify(data,null,4),(err)=&gt;&#123;</div><div class="line">        if(err)&#123;</div><div class="line">            res.send(&apos;server error&apos;);</div><div class="line">        &#125;</div><div class="line">        // 文件写入成功之后重新跳转到主页面</div><div class="line">        res.redirect(&apos;/&apos;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 渲染主页面</div><div class="line">exports.showIndex = (req,res) =&gt; &#123;</div><div class="line">    res.render(&apos;index&apos;,&#123;list : data&#125;);</div><div class="line">&#125;</div><div class="line">// 跳转到添加图书的页面</div><div class="line">exports.toAddBook = (req,res) =&gt; &#123;</div><div class="line">    res.render(&apos;addBook&apos;,&#123;&#125;);</div><div class="line">&#125;</div><div class="line">// 添加图书保存数据</div><div class="line">exports.addBook = (req,res) =&gt; &#123;</div><div class="line">    // 获取表单数据</div><div class="line">    let info = req.body;</div><div class="line">    let book = &#123;&#125;;</div><div class="line">    for(let key in info)&#123;</div><div class="line">        book[key] = info[key];</div><div class="line">    &#125;</div><div class="line">    book.id = maxBookCode() + 1;</div><div class="line">    data.push(book);</div><div class="line">    // 把内存中的数据写入文件</div><div class="line">    writeDataToFile(res);</div><div class="line">&#125;</div><div class="line">// 跳转编辑图书页面</div><div class="line">exports.toEditBook = (req,res) =&gt; &#123;</div><div class="line">    let id = req.query.id;</div><div class="line">    let book = &#123;&#125;;</div><div class="line">    data.forEach((item)=&gt;&#123;</div><div class="line">        if(id == item.id)&#123;</div><div class="line">            book = item;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    res.render(&apos;editBook&apos;,book);</div><div class="line">&#125;</div><div class="line">// 编辑图书更新数据</div><div class="line">exports.editBook = (req,res) =&gt; &#123;</div><div class="line">    let info = req.body;</div><div class="line">    data.forEach((item)=&gt;&#123;</div><div class="line">        if(info.id == item.id)&#123;</div><div class="line">            for(let key in info)&#123;</div><div class="line">                item[key] = info[key];</div><div class="line">            &#125;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    // 把内存中的数据写入文件</div><div class="line">    writeDataToFile(res);</div><div class="line">&#125;</div><div class="line">// 删除图书信息</div><div class="line">exports.deleteBook = (req,res) =&gt; &#123;</div><div class="line">    let id = req.query.id;</div><div class="line">    data.forEach((item,index)=&gt;&#123;</div><div class="line">        if(id == item.id)&#123;</div><div class="line">            // 删除数组的一项数据</div><div class="line">            data.splice(index,1);</div><div class="line">        &#125;</div><div class="line">        return;</div><div class="line">    &#125;);</div><div class="line">    // 把内存中的数据写入文件</div><div class="line">    writeDataToFile(res);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">    路由模块 router.js</div><div class="line">*/</div><div class="line"></div><div class="line">const express = require(&apos;express&apos;);</div><div class="line">const router = express.Router();</div><div class="line">const service = require(&apos;./service.js&apos;);</div><div class="line"></div><div class="line">// 路由处理</div><div class="line"></div><div class="line">// 渲染主页</div><div class="line">router.get(&apos;/&apos;,service.showIndex);</div><div class="line">// 添加图书(跳转到添加图书的页面)</div><div class="line">router.get(&apos;/toAddBook&apos;,service.toAddBook);</div><div class="line">// 添加图书(提交表单)</div><div class="line">router.post(&apos;/addBook&apos;,service.addBook);</div><div class="line">// 跳转到编辑图书信息页面</div><div class="line">router.get(&apos;/toEditBook&apos;,service.toEditBook);</div><div class="line">// 编辑图书提交表单</div><div class="line">router.post(&apos;/editBook&apos;,service.editBook);</div><div class="line">// 删除图书信息</div><div class="line">router.get(&apos;/deleteBook&apos;,service.deleteBook);</div><div class="line"></div><div class="line">module.exports = router;</div></pre></td></tr></table></figure>
-
+</code></pre>
+          
       
     </div>
     
@@ -309,6 +291,10 @@
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2017/07/27/nodejs案例 思路分析/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -355,54 +341,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>包括几个方面：<br>  注册，登录，增 删 改 查</p>
+              <p>包括几个方面：<br>  注册，登录，增 删 改 查</p>
 <h2 id="后台php："><a href="#后台php：" class="headerlink" title="后台php："></a>后台php：</h2><h3 id="0-php-设置"><a href="#0-php-设置" class="headerlink" title="0. php 设置"></a>0. php 设置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">header(<span class="string">"content-type:text/html;charset=utf8"</span>);</div></pre></td></tr></table></figure>
 <p>设定要用的默认时区。自 PHP 5.1 可用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date_default_timezone_set(<span class="string">'PRC'</span>);</div></pre></td></tr></table></figure></p>
-<h3 id="1-注册：—-gt-增-—-gt-insert-into-表名-values-（各项的值）"><a href="#1-注册：—-gt-增-—-gt-insert-into-表名-values-（各项的值）" class="headerlink" title="1. 注册：—&gt;  增  —-&gt;  insert into  表名  values （各项的值）"></a>1. 注册：—&gt;  增  —-&gt;  insert into  表名  values （各项的值）</h3><h4 id="1-1-开启数据库；"><a href="#1-1-开启数据库；" class="headerlink" title="1.1  开启数据库；"></a>1.1  开启数据库；</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql_connect();</div><div class="line"><span class="variable">$link</span> = @mysql_connect(<span class="string">"localhost"</span>,<span class="string">"用户名"</span>,<span class="string">"密码"</span>) or die(<span class="string">"服务器连接失败"</span>);</div><div class="line">mysql_select_db(<span class="string">"blog"</span>,<span class="variable">$link</span>);</div><div class="line">mysql_query(<span class="string">"set names utf8"</span>);</div></pre></td></tr></table></figure>
-<h4 id="1-2-提交；-通过-POST提交"><a href="#1-2-提交；-通过-POST提交" class="headerlink" title="1.2 提交； 通过$_POST提交"></a>1.2 提交； 通过$_POST提交</h4><pre><code>① 首先判断提交内容是否不为空（用户是否输入了内容）;
-② 若用户都输入了内容，则提交到数据库：
-  $sql = &quot;书写数据库命令&quot;;
-  $rs = mysql_query($sql);  --&gt;  执行数据库命令
-③ 判断是否提交到数据库：
-  $rs 为 true 时，提交完成； 执行完成后的动作（跳转....）
-  $rs 为 false 时， 提交失败； 执行失败后的动作（跳转....）
-</code></pre><h3 id="2-登录：-—-gt-查"><a href="#2-登录：-—-gt-查" class="headerlink" title="2. 登录： —-&gt;　查"></a>2. 登录： —-&gt;　查</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from 表名 <span class="built_in">where</span>  条件</div><div class="line">select n.*,u.* from 表1 as n left join 表2 as u on n.user_id = u.user_id  <span class="built_in">where</span> 条件</div></pre></td></tr></table></figure>
-<h4 id="2-1-开启数据库；"><a href="#2-1-开启数据库；" class="headerlink" title="2.1   开启数据库；"></a>2.1   开启数据库；</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql_connect();</div><div class="line"><span class="variable">$link</span> = @mysql_connect(<span class="string">"localhost"</span>,<span class="string">"用户名"</span>,<span class="string">"密码"</span>) or die(<span class="string">"服务器连接失败"</span>);</div><div class="line">mysql_select_db(<span class="string">"blog"</span>,<span class="variable">$link</span>);</div><div class="line">mysql_query(<span class="string">"set names utf8"</span>);</div></pre></td></tr></table></figure>
-<h4 id="2-2-输入账号密码-登录-提交-："><a href="#2-2-输入账号密码-登录-提交-：" class="headerlink" title="2.2  输入账号密码 , 登录(提交)："></a>2.2  输入账号密码 , 登录(提交)：</h4><pre><code>① 首先判断提交内容是否不为空（用户是否输入了内容）;
-② 若用户都输入了内容，则到数据库中去查询密码是否正确：
-  首先要知道根据什么查询  -----&gt;  根据用户名查询密码
-  $sql = &quot;书写数据库命令&quot;;
-  $info = mysql_query($sql);  --&gt;  执行数据库命令,得到查询到的内容
-  $result = mysql_fetch_array($info, MYSQL_ASSOC);  ----&gt;  设置得到的数据格式
-③ 判断查询到的密码与用户输入的密码是否一致：
-  如果一致则 为 true 时，
-        登录成功； 执行完成后的动作（跳转....）
-  如果不一致则 为 false 时，
-        提示用户名或密码输入错误； 执行失败后的动作（跳转....）
-</code></pre><h3 id="3-发布新闻：———-gt-增-（网数据库里添加）"><a href="#3-发布新闻：———-gt-增-（网数据库里添加）" class="headerlink" title="3. 发布新闻：———&gt;  增 （网数据库里添加）"></a>3. 发布新闻：———&gt;  增 （网数据库里添加）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into  表名  values （各项的值）</div></pre></td></tr></table></figure>
-<h3 id="4-修改新闻：——-gt-先查询后更新-—–-gt-先用-select-再用-update"><a href="#4-修改新闻：——-gt-先查询后更新-—–-gt-先用-select-再用-update" class="headerlink" title="4.修改新闻：——-&gt; 先查询后更新  —–&gt;　　先用 select  再用  update"></a>4.修改新闻：——-&gt; 先查询后更新  —–&gt;　　先用 select  再用  update</h3><h4 id="4-1-开启数据库；-—-gt-mysql-connect"><a href="#4-1-开启数据库；-—-gt-mysql-connect" class="headerlink" title="4.1   开启数据库； —-&gt; mysql_connect();"></a>4.1   开启数据库； —-&gt; mysql_connect();</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$link</span> = @mysql_connect(<span class="string">"localhost"</span>,<span class="string">"用户名"</span>,<span class="string">"密码"</span>) or die(<span class="string">"服务器连接失败"</span>);</div><div class="line">mysql_select_db(<span class="string">"blog"</span>,<span class="variable">$link</span>);</div><div class="line">mysql_query(<span class="string">"set names utf8"</span>);</div></pre></td></tr></table></figure>
-<h4 id="4-2-查-–-gt-把原来的数据在页面上展示出来："><a href="#4-2-查-–-gt-把原来的数据在页面上展示出来：" class="headerlink" title="4.2 查 –&gt; 把原来的数据在页面上展示出来："></a>4.2 查 –&gt; 把原来的数据在页面上展示出来：</h4><p>首先要知道根据什么查询  —–&gt;  根据传参（id…）查询<br>$sql = “书写数据库命令”;<br>$info = mysql_query($sql);  –&gt;  执行数据库命令,得到查询到的内容<br>$result = mysql_fetch_array($info, MYSQL_ASSOC);  —-&gt;  设置得到的数据格式<br>然后再把得到的数据在html上展示出来</p>
-<h4 id="4-3-更新-–-gt-把修改后的数据在数据库里更新"><a href="#4-3-更新-–-gt-把修改后的数据在数据库里更新" class="headerlink" title="4.3  更新 –&gt; 把修改后的数据在数据库里更新."></a>4.3  更新 –&gt; 把修改后的数据在数据库里更新.</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update 表名 <span class="built_in">set</span> name = <span class="string">"js"</span>,author = <span class="string">"xiaopang"</span> <span class="built_in">where</span> id = 3;</div></pre></td></tr></table></figure>
-<p>$sql = “书写数据库命令”;<br>$rs = mysql_query($sql);  –&gt;  执行数据库命令<br>判断是否更新到数据库：<br>$rs 为 true 时，修改完新闻成； 执行完成后的动作（跳转….）<br>$rs 为 false 时， 修改失败； 执行失败后的动作（跳转….）</p>
-<h3 id="5-删除新闻-————-gt-删-（删除数据库的数据）——-gt-delete-from-表名-where-条件"><a href="#5-删除新闻-————-gt-删-（删除数据库的数据）——-gt-delete-from-表名-where-条件" class="headerlink" title="5. 删除新闻  ————&gt;  删 （删除数据库的数据）——&gt;  delete  from  表名  where 条件"></a>5. 删除新闻  ————&gt;  删 （删除数据库的数据）——&gt;  delete  from  表名  where 条件</h3><h4 id="5-1-开启数据库；"><a href="#5-1-开启数据库；" class="headerlink" title="5.1   开启数据库；"></a>5.1   开启数据库；</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$link</span> = @mysql_connect(<span class="string">"localhost"</span>,<span class="string">"用户名"</span>,<span class="string">"密码"</span>) or die(<span class="string">"服务器连接失败"</span>);</div><div class="line">mysql_select_db(<span class="string">"blog"</span>,<span class="variable">$link</span>);</div><div class="line">mysql_query(<span class="string">"set names utf8"</span>);</div></pre></td></tr></table></figure>
-<h4 id="5-2-删除数据；"><a href="#5-2-删除数据；" class="headerlink" title="5.2  删除数据；"></a>5.2  删除数据；</h4><p>$sql = “书写数据库命令”;<br>$rs = mysql_query($sql);  –&gt;  执行数据库命令<br>判断数据库中的数据是否删除了：<br>$rs 为 true 时，删除成功； 执行完成后的动作（跳转….）<br>$rs 为 false 时， 删除失败； 执行失败后的动作（跳转….）</p>
-<h3 id="6-上传图片：-FILE"><a href="#6-上传图片：-FILE" class="headerlink" title="6. 上传图片： $_FILE();"></a>6. 上传图片： $_FILE();</h3><pre><code>$realName = $_FILES[&apos;pic&apos;][&apos;name&apos;];
-$extPos = strrpos($realName, &quot;.&quot;);  ///  从右面开始查找，找到 . 所在的位置，返回该位置的索引
-$ext = substr($realName, $extPos);  ///  截取字符串，参数1是要截取的字符串，参数2是从什么位置开始截，返回截取的字符串
-// 重命名  time() --&gt; 获取当前的时间戳，  mt_rand(a,b); ---&gt; 随机产生一个从a 到 b 之间的数；
- $picName = time().mt_rand(10000,99999).$ext;
-
- //move_uploaded_file(要移动的文件,文件的新位置); --&gt; 把上传的文件移动到新位置，如果成功返回true，失败返回false
- $rs = move_uploaded_file($_FILES[&apos;pic&apos;][&apos;tmp_name&apos;], &apos;../Public/Upload/&apos;.$picName);
- // file_exists(文件的)  判断文件是否存在
- file_exists(&quot;../Public/Upload/&quot; . $pic[&apos;pic_url&apos;])
-</code></pre><h3 id="7-平常纠错的几个步骤："><a href="#7-平常纠错的几个步骤：" class="headerlink" title="7. 平常纠错的几个步骤："></a>7. 平常纠错的几个步骤：</h3><pre><code>-1. 页面上报错的: 看在第几行，然后看他的上一行分号有没有漏掉，然后该行的变量有没有写错，
--2. 页面上没有报错的：
-      +2.1 在$sql下面 打印输出一下$sql; 然后看一下命令有没有错，找不到可以在数据库软件里运行一下，如果能运行，说明没错，如果运行失败，说明命令行有错误；
-      +2.2 在$rs = mysql_query($sql); 下面打印输出一下$rs;然后看一下他的值对不对;
-      +2.3 在 $result = mysql_fetch_array($info, MYSQL_ASSOC); 打印输出一下$result;
-      然后看一下他的值对不对；
-</code></pre>
+          
       
     </div>
     
@@ -411,6 +353,10 @@ $ext = substr($realName, $extPos);  ///  截取字符串，参数1是要截取�
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2017/07/27/MySQL语句/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -457,219 +403,11 @@ $ext = substr($realName, $extPos);  ///  截取字符串，参数1是要截取�
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><h2 id="1-全局对象-Buffer的基本操作"><a href="#1-全局对象-Buffer的基本操作" class="headerlink" title="1. 全局对象 Buffer的基本操作"></a>1. 全局对象 Buffer的基本操作</h2><p>Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;</p>
+              <h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><h2 id="1-全局对象-Buffer的基本操作"><a href="#1-全局对象-Buffer的基本操作" class="headerlink" title="1. 全局对象 Buffer的基本操作"></a>1. 全局对象 Buffer的基本操作</h2><p>Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;</p>
 <h3 id="1-、构造方法（类）"><a href="#1-、构造方法（类）" class="headerlink" title="(1)、构造方法（类）"></a>(1)、构造方法（类）</h3><pre><code>- 实例化buf对象:
     + new Buffer(size):
-
-        分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出 RangeError 错误。如果 size 为 0，则创建一个长度为 0 的 Buffer。
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:<span class="built_in">let</span> buf = new Buffer(5);</div><div class="line">   console.log(buf);              // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
-
-    + new Buffer(string[, encoding]):
-        string &lt; string &gt; 要编码的字符串,
-        encoding &lt; string &gt; string 的字符串编码。 默认： &apos;utf8&apos;,
-        创建一个包含给定字符串 string 的 Buffer。encoding 参数制定 string 的字符串编码。
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:const buf1 = new Buffer(<span class="string">'this is a tést'</span>);</div><div class="line">   console.log(buf1.toString());// 输出: this is a tést</div></pre></td></tr></table></figure>
-
-    + 类方法：Buffer.alloc(size[, fill[, encoding]])  (常用)
-
-        size &lt;integer&gt; 新建的 Buffer 期望的长度
-        fill &lt;string&gt; | &lt;Buffer&gt; | &lt;integer&gt; 用来预填充新建的 Buffer 的值。 默认: 0
-        encoding &lt;string&gt; 如果 fill 是字符串，则该值是它的字符编码。 默认: &apos;utf8&apos;
-        分配一个大小为 size 字节的新建的 Buffer 。 如果 fill 为 undefined ，则该 Buffer 会用 0 填充。
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.alloc(5);</div><div class="line">    console.log(buf);            // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
-
-    + 类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
-
-        arrayBuffer &lt;ArrayBuffer&gt; 一个 ArrayBuffer，或一个 TypedArray 的 .buffer 属性。
-        byteOffset &lt;integer&gt; 开始拷贝的索引。默认为 0。
-        length &lt;integer&gt; 拷贝的字节数。默认为 arrayBuffer.length - byteOffset。
-        该方法将创建一个 ArrayBuffer 的视图，而不会复制底层内存。例如，当传入一个 TypedArray 实例的 .buffer 属性的引用时，这个新建的 Buffer 会像 TypedArray 那样共享同一分配的内存。
-        let buf = Buffer.from(&apos;hello&apos;,&apos;utf8&apos;);
-        console.log(buf);
-
-    + 类方法：Buffer.from(array)
-
-        通过一个八位字节的 array 创建一个新的 Buffer 。
-        let buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
-        console.log(buf.toString());
-</code></pre><h3 id="2-、静态方法"><a href="#2-、静态方法" class="headerlink" title="(2)、静态方法"></a>(2)、静态方法</h3><pre><code>    - 类方法：Buffer.isEncoding(encoding)
-
-            如果 encoding 是一个支持的字符编码则返回 true，否则返回 false 。
-            encoding &lt;string&gt; 一个要检查的字符编码名称
-            返回: &lt;boolean&gt;
-
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(Buffer.isEncoding(<span class="string">'utf8'</span>));  // <span class="literal">true</span></div><div class="line">    console.log(Buffer.isEncoding(<span class="string">'gbk'</span>));   // <span class="literal">false</span></div></pre></td></tr></table></figure>
-
-    - 类方法：Buffer.isBuffer(obj)
-
-            obj &lt;Object&gt;
-            返回: &lt;boolean&gt;
-            如果 obj 是一个 Buffer 则返回 true ，否则返回 false 。
-
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    console.log(Buffer.isBuffer(buf));  // <span class="literal">true</span></div><div class="line">    console.log(Buffer.isBuffer(&#123;&#125;));   // <span class="literal">false</span></div></pre></td></tr></table></figure>
-
-    - 类方法：Buffer.byteLength(string[, encoding])
-
-            返回一个字符串的实际字节长度。 这与 String.prototype.length 不同，因为那返回字符串的字符数。
-            string: &lt;string&gt; | &lt;Buffer&gt; | &lt;TypedArray&gt; | &lt;DataView&gt; | &lt;ArrayBuffer&gt; 要计算长度的值
-            encoding :&lt;string&gt; 如果 string 是字符串，则这是它的字符编码。 默认: &apos;utf8&apos;
-            返回: &lt;integer&gt; string 包含的字节数
-
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.from(<span class="string">'中国'</span>,<span class="string">'ascii'</span>);</div><div class="line">    console.log(Buffer.byteLength(buf));   // 2</div><div class="line">    console.log(buf.toString());   // 乱码</div></pre></td></tr></table></figure>
-
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.from(<span class="string">'中国'</span>,<span class="string">'utf8'</span>);</div><div class="line">    console.log(Buffer.byteLength(buf));   // 2</div><div class="line">    console.log(buf.toString());   // 中国</div></pre></td></tr></table></figure>
-
-    - 类方法：Buffer.concat(list[, totalLength])
-
-            返回一个合并了 list 中所有 Buffer 实例的新建的 Buffer 。
-            list &lt;Array&gt; 要合并的 Buffer 或 Uint8Array 实例的数组
-            totalLength &lt;integer&gt; 合并时 list 中 Buffer 实例的总长度
-            返回: &lt;Buffer&gt;
-
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg：<span class="built_in">let</span> buf1 = Buffer.alloc(3);</div><div class="line">    <span class="built_in">let</span> buf2 = Buffer.alloc(5);</div><div class="line">    <span class="built_in">let</span> buf3 = Buffer.concat([buf1,buf2]);</div><div class="line">    console.log(Buffer.byteLength(buf3));   // 8</div></pre></td></tr></table></figure>
-
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf1 = Buffer.from(<span class="string">'tom'</span>);</div><div class="line">    <span class="built_in">let</span> buf2 = Buffer.from(<span class="string">'jerry'</span>);</div><div class="line">    <span class="built_in">let</span> buf3 = Buffer.concat([buf1,buf2]);</div><div class="line">    console.log(Buffer.byteLength(buf3));   // 8</div><div class="line">    console.log(buf3.toString());           // tomjerry</div></pre></td></tr></table></figure>
-
-### (3)、实例方法
-
-        - buf.write(string[, offset[, length]][, encoding]):
-
-            根据 encoding 的字符编码写入 string 到 buf 中的 offset 位置。 length 参数是写入的字节数。 如果 buf 没有足够的空间保存整个字符串，则只会写入 string 的一部分。 只部分解码的字符不会被写入。
-            string &lt;string&gt; 要写入 buf 的字符串
-            offset &lt;integer&gt; 开始写入 string 的位置。默认: 0
-            length &lt;integer&gt; 要写入的字节数。默认: buf.length - offset
-            encoding &lt;string&gt; string 的字符编码。默认: &apos;utf8&apos;
-            返回: &lt;integer&gt; 写入的字节数
-
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.alloc(5);</div><div class="line">    buf.write(<span class="string">'hello'</span>,2,2);  //从索引2开始写入，写入2个</div><div class="line">    console.log(buf);      //  &lt;Buffer 00 00 68 65 00&gt;</div><div class="line">    console.log(buf.toString()); //he</div></pre></td></tr></table></figure>
-
-        - buf.slice([start[, end]])
-            返回一个指向相同原始内存的新建的 Buffer，但做了偏移且通过 start 和 end 索引进行裁剪。
-            start &lt;integer&gt; 新建的 Buffer 开始的位置。 默认: 0
-            end &lt;integer&gt; 新建的 Buffer 结束的位置（不包含）。 默认: buf.length
-            返回: &lt;Buffer&gt;
-
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    <span class="built_in">let</span> buf1 = buf.slice(2,3);    // 从索引2裁剪到索引3</div><div class="line">    console.log(buf === buf1);//<span class="literal">false</span></div><div class="line">    console.log(buf1.toString());  // l</div></pre></td></tr></table></figure>
-
-        - buf.toJSON()
-            toJSON方法不需要显式调用，当JSON.stringify方法调用的时候会自动调用toJSON方法
-            返回 buf 的 JSON 格式。 当字符串化一个 Buffer 实例时，JSON.stringify() 会隐式地调用该函数。
-
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);</div><div class="line">    const json = JSON.stringify(buf);</div><div class="line">    console.log(json);    // &#123;<span class="string">"type"</span>:<span class="string">"Buffer"</span>,<span class="string">"data"</span>:[1,2,3,4,5]&#125;</div></pre></td></tr></table></figure>
-
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: const buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    const json = JSON.stringify(buf);</div><div class="line">    console.log(json);       // &#123;<span class="string">"type"</span>:<span class="string">"Buffer"</span>,<span class="string">"data"</span>:[104,101,108,108,111]&#125; (十进制代码)</div></pre></td></tr></table></figure>
-</code></pre><h2 id="2-path-路径操作"><a href="#2-path-路径操作" class="headerlink" title="2. path 路径操作"></a>2. path 路径操作</h2><p>进行路径操作之前要对path 进行引入 ：const path = require(‘path’);</p>
-<p>在linux 系统中 路径 只能用 / 表示 ；<br>在windows 系统中 可以用 / 和 \ 都可以，但是 \ 代表转义字符，所以我们也可以用 \ 表示</p>
-<pre><code>### 1.path.basename(path[, ext])  ： 获取路径的最后一部分
-        path &lt;string&gt;
-        ext &lt;string&gt; 可选的文件扩展名
-        返回: &lt;string&gt;
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>));  //  quux.html</div><div class="line">    console.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>, <span class="string">'.html'</span>));  //quux</div></pre></td></tr></table></figure>
-
-### 2.path.dirname(path)  :获取路径
-        path.dirname() 方法返回一个 path 的目录名
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(__dirname);          //// 打印的是当前文件所在的目录，不包括文件名</div><div class="line">    console.log(path.dirname(<span class="string">'/abc/qqq/www/abc'</span>));  ///abc/qqq/www</div></pre></td></tr></table></figure>
-
-### 3.path.extname(path) :获取扩展名称
-        path.extname() 方法返回 path 的扩展名
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg:console.log(path.extname(<span class="string">'index.html'</span>));  // .html</div></pre></td></tr></table></figure>
-
-### 4.路径的格式化处理
-        path.format(pathObject)  方法会从一个对象返回一个路径字符串。 obj-&gt;string  与 path.parse() 相反。
-        path.parse() path.parse() 方法返回一个对象，对象的属性表示 path 的元素。 string-&gt;obj
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">eg:</div><div class="line">    <span class="built_in">let</span> obj = path.parse(__filename);</div><div class="line">    console.log(obj);</div><div class="line">    console.log(obj.base);</div><div class="line">    /*&#123; root: <span class="string">'G:\\'</span>,</div><div class="line">      dir: <span class="string">'G:\\传智播客\\代码\\就业班\\nodejs\\2'</span>,</div><div class="line">      base: <span class="string">'04.js'</span>,</div><div class="line">      ext: <span class="string">'.js'</span>,</div><div class="line">      name: <span class="string">'04'</span> &#125;*/</div><div class="line">    //04.js</div></pre></td></tr></table></figure>
-
-### 5.path.isAbsolute(path) :判断是否为绝对路径
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.isAbsolute(<span class="string">'/foo/bar'</span>));  // <span class="literal">true</span></div><div class="line">    console.log(path.isAbsolute(<span class="string">'C:/foo/..'</span>));  //<span class="literal">true</span></div><div class="line">    path.isAbsolute(<span class="string">'qux/'</span>);     // <span class="literal">false</span></div><div class="line">    path.isAbsolute(<span class="string">'.'</span>);        // <span class="literal">false</span></div></pre></td></tr></table></figure>
-
-### 6.path.join([...paths]) :拼接路径（..表示上层路径；.表示当前路径）,在连接路径的时候会格式化路径
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.join(<span class="string">'/foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz/asdf'</span>, <span class="string">'quux'</span>, <span class="string">'../../'</span>)); //\foo\bar\baz\</div></pre></td></tr></table></figure>
-
-### 7.path.normalize(path) ：规范化路径
-    path.normalize() 方法会规范化给定的 path，并解析 &apos;..&apos; 和 &apos;.&apos; 片段。
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：console.log(path.normalize(<span class="string">'/foo/bar//baz/asdf/quux/..'</span>));  //  \foo\bar\baz\asdf</div><div class="line">    console.log(path.normalize(<span class="string">'C:\\temp\\\\foo\\bar\\..\\'</span>));  //  C:\temp\foo\</div></pre></td></tr></table></figure>
-
-### 8.path.relative(from, to) 两个参数，计算两个路径的相对路径
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：console.log(path.relative(<span class="string">'/data/orandea/test/aaa'</span>, <span class="string">'/data/orandea/impl/bbb'</span>)); //  ..\..\impl\bbb</div><div class="line">    console.log(path.relative(<span class="string">'C:\\orandea\\test\\aaa'</span>, <span class="string">'C:\\orandea\\impl\\bbb'</span>)); // ..\..\impl\bbb</div></pre></td></tr></table></figure>
-
-### 9.path.resolve([...paths])  :path.resolve() 方法会把一个路径或路径片段的序列解析为一个绝对路径。
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.resolve(<span class="string">'wwwroot'</span>, <span class="string">'static_files/png/'</span>, <span class="string">'../gif/image.gif'</span>));</div><div class="line">// G:\传智播客\代码\就业班\nodejs\2\wwwroot\static_files\gif\image.gif</div></pre></td></tr></table></figure>
-
-### 10. 两个特殊属性
-    path.delimiter  :    环境变量分隔符(windows中使用; linux中使用:)
-    path.sep      :   表示路径分隔符（windows是\ Linux是/）
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: console.log(path.delimiter);//  : 或 ;</div><div class="line">    console.log(path.sep);//  \   或   /</div></pre></td></tr></table></figure>
-</code></pre><h2 id="3-异步I-O-input-output"><a href="#3-异步I-O-input-output" class="headerlink" title="3.异步I/O input/output"></a>3.异步I/O input/output</h2><pre><code>-1、文件操作
--2、网络操作
-
-
-在浏览器中也存在异步操作：
-    -1、定时任务
-    -2、事件处理
-    -3、Ajax回调处理
-
-js的运行时单线程的,引入事件队列机制;
-    -Node.js中的事件模型与浏览器中的事件模型类似 : 单线程+事件队列
-
-Node.js中异步执行的任务：  (基于回调函数的编码风格)
-    -1、文件I/O
-    -2、网络I/O
-
-### 1.文件操作-查看文件状态
-    fs ：File System(文件系统)
-    首先要引入fs  ; const fs = require(&apos;fs&apos;);
-    -异步操作：
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">fs.stat(<span class="string">'./abc'</span>,(err,stats) =&gt; &#123;</div><div class="line">    // 一般回调函数的第一个参数是错误对象，如果err为null,表示没有错误，否则表示报错了</div><div class="line">    <span class="keyword">if</span>(err) <span class="built_in">return</span>;</div><div class="line">    <span class="keyword">if</span>(stats.isFile())&#123;</div><div class="line">        console.log(<span class="string">'文件'</span>);</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(stats.isDirectory())&#123;</div><div class="line">        console.log(<span class="string">'目录'</span>);</div><div class="line">    &#125;</div><div class="line">    console.log(stats);</div><div class="line"></div><div class="line">    console.log(2);</div><div class="line">&#125;);</div><div class="line">console.log(3);</div></pre></td></tr></table></figure>
-
-        fs.stat(path, callback) ：检查一个文件是否存在，异步的 stat(2)。
-        回调有两个参数 (err, stats) 其中 stats 是一个 fs.Stats 对象。
-
-        Stat 时间值:
-            atime 文件访问时间
-            ctime 文件的状态信息发生变化的时间（比如文件的权限）
-            mtime 文件数据发生变化的时间
-            birthtime 文件创建的时间
-
-        fs.Stats 类
-
-            -stats.isFile()    -------&gt;    如果是文件返回 true，否则返回 false。
-            -stats.isDirectory()    ------&gt;  如果是目录返回 true，否则返回 false。
-            -stats.isBlockDevice()   -------&gt;  如果是块设备返回 true，否则返回 false。
-            -stats.isCharacterDevice()  -------&gt;  如果是字符设备返回 true，否则返回 false。
-            -stats.isSymbolicLink() (仅对 fs.lstat() 有效)  -------&gt;  如果是软链接返回 true，否则返回    false。
-            -stats.isFIFO()   -------&gt;  如果是FIFO，返回true，否则返回。    -false。FIFO是UNIX中的一种特殊类型的命令管道。
-            -stats.isSocket()  -------&gt;  如果是 Socket 返回 true，否则返回 false。
-
-    同步操作：
-    fs.statSync(path)  : 返回一个 fs.Stats 实例。
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> ret = fs.statSync(<span class="string">'./data.txt'</span>);</div><div class="line">    console.log(ret);</div><div class="line">    console.log(2);</div></pre></td></tr></table></figure>
-
-### 2.读文件操作
-    首先引入我们需要的：
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const fs = require(<span class="string">'fs'</span>);</div><div class="line">const path = require(<span class="string">'path'</span>);</div></pre></td></tr></table></figure>
-
-    异步操作：
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> strpath = path.join(__dirname,<span class="string">'data.txt'</span>);</div><div class="line">fs.readFile(strpath,(err,data)=&gt;&#123;</div><div class="line">    <span class="keyword">if</span>(err) <span class="built_in">return</span>;</div><div class="line">    console.log(data.toString());</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-    如果有第二个参数并且是编码，那么回调函数获取到的数据就是字符串
-    如果没有第二个参数，那么得到的就是Buffer实例对象
-
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fs.readFile(strpath,<span class="string">'utf8'</span>,(err,data)=&gt;&#123;</div><div class="line">    <span class="keyword">if</span>(err) <span class="built_in">return</span>;</div><div class="line">    // console.log(data.toString());</div><div class="line">    console.log(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-    同步操作：
-    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> ret = fs.readFileSync(strpath,<span class="string">'utf8'</span>);</div><div class="line">console.log(ret);</div></pre></td></tr></table></figure>
 </code></pre>
+          
       
     </div>
     
@@ -678,6 +416,10 @@ Node.js中异步执行的任务：  (基于回调函数的编码风格)
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2017/07/27/node-js/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -724,16 +466,9 @@ Node.js中异步执行的任务：  (基于回调函数的编码风格)
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
+              <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2>
+          
       
     </div>
     
@@ -742,6 +477,10 @@ Node.js中异步执行的任务：  (基于回调函数的编码风格)
       
 
       
+      
+        <p class="article-more-link">
+          <a href="/2017/07/26/hello-world/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

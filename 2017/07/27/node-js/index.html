@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入; (1)、构造方法（类）- 实例化buf对象:     + new Buffer(size):          分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出">
+<meta name="description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入; (1)、构造方法（类）- 实例化buf对象:     + new Buffer(size):">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node js">
 <meta property="og:url" content="http://yoursite.com/2017/07/27/node-js/index.html">
 <meta property="og:site_name" content="kevin-个人博客">
-<meta property="og:description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入; (1)、构造方法（类）- 实例化buf对象:     + new Buffer(size):          分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出">
-<meta property="og:updated_time" content="2017-07-27T05:00:36.023Z">
+<meta property="og:description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入; (1)、构造方法（类）- 实例化buf对象:     + new Buffer(size):">
+<meta property="og:updated_time" content="2017-07-27T12:49:55.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node js">
-<meta name="twitter:description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入; (1)、构造方法（类）- 实例化buf对象:     + new Buffer(size):          分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出">
+<meta name="twitter:description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入; (1)、构造方法（类）- 实例化buf对象:     + new Buffer(size):">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -295,38 +295,38 @@
         <h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><h2 id="1-全局对象-Buffer的基本操作"><a href="#1-全局对象-Buffer的基本操作" class="headerlink" title="1. 全局对象 Buffer的基本操作"></a>1. 全局对象 Buffer的基本操作</h2><p>Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;</p>
 <h3 id="1-、构造方法（类）"><a href="#1-、构造方法（类）" class="headerlink" title="(1)、构造方法（类）"></a>(1)、构造方法（类）</h3><pre><code>- 实例化buf对象:
     + new Buffer(size):
+</code></pre><a id="more"></a>
+<pre><code>    分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出 RangeError 错误。如果 size 为 0，则创建一个长度为 0 的 Buffer。
+    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:<span class="built_in">let</span> buf = new Buffer(5);</div><div class="line">   console.log(buf);              // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
 
-        分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出 RangeError 错误。如果 size 为 0，则创建一个长度为 0 的 Buffer。
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:<span class="built_in">let</span> buf = new Buffer(5);</div><div class="line">   console.log(buf);              // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
++ new Buffer(string[, encoding]):
+    string &lt; string &gt; 要编码的字符串,
+    encoding &lt; string &gt; string 的字符串编码。 默认： &apos;utf8&apos;,
+    创建一个包含给定字符串 string 的 Buffer。encoding 参数制定 string 的字符串编码。
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:const buf1 = new Buffer(<span class="string">'this is a tést'</span>);</div><div class="line">   console.log(buf1.toString());// 输出: this is a tést</div></pre></td></tr></table></figure>
 
-    + new Buffer(string[, encoding]):
-        string &lt; string &gt; 要编码的字符串,
-        encoding &lt; string &gt; string 的字符串编码。 默认： &apos;utf8&apos;,
-        创建一个包含给定字符串 string 的 Buffer。encoding 参数制定 string 的字符串编码。
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:const buf1 = new Buffer(<span class="string">'this is a tést'</span>);</div><div class="line">   console.log(buf1.toString());// 输出: this is a tést</div></pre></td></tr></table></figure>
++ 类方法：Buffer.alloc(size[, fill[, encoding]])  (常用)
 
-    + 类方法：Buffer.alloc(size[, fill[, encoding]])  (常用)
+    size &lt;integer&gt; 新建的 Buffer 期望的长度
+    fill &lt;string&gt; | &lt;Buffer&gt; | &lt;integer&gt; 用来预填充新建的 Buffer 的值。 默认: 0
+    encoding &lt;string&gt; 如果 fill 是字符串，则该值是它的字符编码。 默认: &apos;utf8&apos;
+    分配一个大小为 size 字节的新建的 Buffer 。 如果 fill 为 undefined ，则该 Buffer 会用 0 填充。
+    <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.alloc(5);</div><div class="line">    console.log(buf);            // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
 
-        size &lt;integer&gt; 新建的 Buffer 期望的长度
-        fill &lt;string&gt; | &lt;Buffer&gt; | &lt;integer&gt; 用来预填充新建的 Buffer 的值。 默认: 0
-        encoding &lt;string&gt; 如果 fill 是字符串，则该值是它的字符编码。 默认: &apos;utf8&apos;
-        分配一个大小为 size 字节的新建的 Buffer 。 如果 fill 为 undefined ，则该 Buffer 会用 0 填充。
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">let</span> buf = Buffer.alloc(5);</div><div class="line">    console.log(buf);            // &lt;Buffer 00 00 00 00 00&gt;</div></pre></td></tr></table></figure>
++ 类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
 
-    + 类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
+    arrayBuffer &lt;ArrayBuffer&gt; 一个 ArrayBuffer，或一个 TypedArray 的 .buffer 属性。
+    byteOffset &lt;integer&gt; 开始拷贝的索引。默认为 0。
+    length &lt;integer&gt; 拷贝的字节数。默认为 arrayBuffer.length - byteOffset。
+    该方法将创建一个 ArrayBuffer 的视图，而不会复制底层内存。例如，当传入一个 TypedArray 实例的 .buffer 属性的引用时，这个新建的 Buffer 会像 TypedArray 那样共享同一分配的内存。
+    let buf = Buffer.from(&apos;hello&apos;,&apos;utf8&apos;);
+    console.log(buf);
 
-        arrayBuffer &lt;ArrayBuffer&gt; 一个 ArrayBuffer，或一个 TypedArray 的 .buffer 属性。
-        byteOffset &lt;integer&gt; 开始拷贝的索引。默认为 0。
-        length &lt;integer&gt; 拷贝的字节数。默认为 arrayBuffer.length - byteOffset。
-        该方法将创建一个 ArrayBuffer 的视图，而不会复制底层内存。例如，当传入一个 TypedArray 实例的 .buffer 属性的引用时，这个新建的 Buffer 会像 TypedArray 那样共享同一分配的内存。
-        let buf = Buffer.from(&apos;hello&apos;,&apos;utf8&apos;);
-        console.log(buf);
++ 类方法：Buffer.from(array)
 
-    + 类方法：Buffer.from(array)
-
-        通过一个八位字节的 array 创建一个新的 Buffer 。
-        let buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
-        console.log(buf.toString());
+    通过一个八位字节的 array 创建一个新的 Buffer 。
+    let buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
+    console.log(buf.toString());
 </code></pre><h3 id="2-、静态方法"><a href="#2-、静态方法" class="headerlink" title="(2)、静态方法"></a>(2)、静态方法</h3><pre><code>    - 类方法：Buffer.isEncoding(encoding)
 
             如果 encoding 是一个支持的字符编码则返回 true，否则返回 false 。
@@ -515,7 +515,7 @@ Node.js中异步执行的任务：  (基于回调函数的编码风格)
         <p><span>本文标题:</span><a href="/2017/07/27/node-js/">node js</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">徐振华</a></p>
         <p><span>发布时间:</span>2017-07-27, 12:26:58</p>
-        <p><span>最后更新:</span>2017-07-27, 13:00:36</p>
+        <p><span>最后更新:</span>2017-07-27, 20:49:55</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/07/27/node-js/" title="node js">http://yoursite.com/2017/07/27/node-js/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/27/node-js/　　作者: 徐振华" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
