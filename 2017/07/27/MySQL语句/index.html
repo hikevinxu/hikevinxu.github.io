@@ -159,6 +159,8 @@
                         
                             <li><a href="/archives/">所有文章</a></li>
                         
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
                             <li><a href="/tags/">标签云</a></li>
                         
                             <li><a href="/about/">关于我</a></li>
@@ -170,9 +172,15 @@
                             
                                 <a class="fa Email" href="mailto:hikevinxu@163.com" title="Email"></a>
                             
+                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                            
                                 <a class="fa GitHub" href="https://github.com/" title="GitHub"></a>
                             
                                 <a class="fa 知乎" href="https://www.zhihu.com/people/kevin-63-26/activities" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="/douban" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="/jianshu" title="简书"></a>
                             
                                 <a class="fa 博客园" href="https://www.cnblogs.com/" title="博客园"></a>
                             
@@ -236,6 +244,8 @@
                 
                     <li><a href="/archives/">所有文章</a></li>
                 
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
                     <li><a href="/tags/">标签云</a></li>
                 
                     <li><a href="/about/">关于我</a></li>
@@ -248,9 +258,15 @@
                             
                                 <a class="fa Email" target="_blank" href="mailto:hikevinxu@163.com" title="Email"></a>
                             
+                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                            
                                 <a class="fa GitHub" target="_blank" href="https://github.com/" title="GitHub"></a>
                             
                                 <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/kevin-63-26/activities" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="/douban" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="/jianshu" title="简书"></a>
                             
                                 <a class="fa 博客园" target="_blank" href="https://www.cnblogs.com/" title="博客园"></a>
                             
@@ -408,7 +424,7 @@ $ext = substr($realName, $extPos);  ///  截取字符串，参数1是要截取�
     <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
     </script>
 
 
@@ -536,14 +552,14 @@ $ext = substr($realName, $extPos);  ///  截取字符串，参数1是要截取�
     
         var oOpenInNew = {
             
-            
-            
-            
-            
-            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
-            
+             menu: ".header-menu a", 
              friends: "#js-friends a", 
              socail: ".social a" 
         }
