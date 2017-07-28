@@ -73,7 +73,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -105,6 +105,13 @@
 
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -279,6 +286,70 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-nodejs案例(mysql + 前端渲染)思路分析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/28/nodejs案例(mysql + 前端渲染)思路分析/" class="article-date">
+      <time datetime="2017-07-28T10:46:51.958Z" itemprop="datePublished">2017-07-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/28/nodejs案例(mysql + 前端渲染)思路分析/">nodejs 案例思路分析（数据库+前端渲染）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="nodejs-案例思路分析（连接数据库，对数据库操作）-前端渲染"><a href="#nodejs-案例思路分析（连接数据库，对数据库操作）-前端渲染" class="headerlink" title="nodejs 案例思路分析（连接数据库，对数据库操作）(前端渲染)"></a>nodejs 案例思路分析（连接数据库，对数据库操作）(前端渲染)</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所有依赖的包"><a href="#3-安装所有依赖的包" class="headerlink" title="3.安装所有依赖的包"></a>3.安装所有依赖的包</h3><pre><code>- 1.express
+- 2.art-template
+- 3.express-art-template
+- 4.body-parser
+</code></pre>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2017/07/28/nodejs案例(mysql + 前端渲染)思路分析/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-node Js概述" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -428,7 +499,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="通过创建-gh-pages-分支"><a href="#通过创建-gh-pages-分支" class="headerlink" title="通过创建 gh-pages 分支"></a>通过创建 gh-pages 分支</h2>
+              <h3 id="通过创建-gh-pages-分支"><a href="#通过创建-gh-pages-分支" class="headerlink" title="通过创建 gh-pages 分支"></a>通过创建 gh-pages 分支</h3>
           
       
     </div>
@@ -459,10 +530,10 @@
 
 
   
-    <article id="post-nodejs案例(mysql)思路分析" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-nodejs案例(mysql + 后台渲染)思路分析" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/28/nodejs案例(mysql)思路分析/" class="article-date">
+      <a href="/2017/07/28/nodejs案例(mysql + 后台渲染)思路分析/" class="article-date">
       <time datetime="2017-07-28T05:38:00.563Z" itemprop="datePublished">2017-07-28</time>
 </a>
 
@@ -478,7 +549,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/28/nodejs案例(mysql)思路分析/">nodejs 案例思路分析（数据库+后台渲染）</a>
+      <a class="article-title" href="/2017/07/28/nodejs案例(mysql + 后台渲染)思路分析/">nodejs 案例思路分析（数据库+后台渲染）</a>
     </h1>
   
 
@@ -488,7 +559,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="nodejs-案例思路分析（连接数据库，对数据库操作）-后台渲染"><a href="#nodejs-案例思路分析（连接数据库，对数据库操作）-后台渲染" class="headerlink" title="nodejs 案例思路分析（连接数据库，对数据库操作）(后台渲染)"></a>nodejs 案例思路分析（连接数据库，对数据库操作）(后台渲染)</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所以依赖的包"><a href="#3-安装所以依赖的包" class="headerlink" title="3.安装所以依赖的包"></a>3.安装所以依赖的包</h3><pre><code>- 1.express
+              <h2 id="nodejs-案例思路分析（连接数据库，对数据库操作）-后台渲染"><a href="#nodejs-案例思路分析（连接数据库，对数据库操作）-后台渲染" class="headerlink" title="nodejs 案例思路分析（连接数据库，对数据库操作）(后台渲染)"></a>nodejs 案例思路分析（连接数据库，对数据库操作）(后台渲染)</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所有依赖的包"><a href="#3-安装所有依赖的包" class="headerlink" title="3.安装所有依赖的包"></a>3.安装所有依赖的包</h3><pre><code>- 1.express
 - 2.art-template
 - 3.express-art-template
 - 4.body-parser
@@ -504,7 +575,7 @@
       
       
         <p class="article-more-link">
-          <a href="/2017/07/28/nodejs案例(mysql)思路分析/#more">more >></a>
+          <a href="/2017/07/28/nodejs案例(mysql + 后台渲染)思路分析/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -523,10 +594,10 @@
 
 
   
-    <article id="post-nodejs案例(json)思路分析" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-nodejs案例(json + 后台渲染)思路分析" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/27/nodejs案例(json)思路分析/" class="article-date">
+      <a href="/2017/07/27/nodejs案例(json + 后台渲染)思路分析/" class="article-date">
       <time datetime="2017-07-27T12:13:00.292Z" itemprop="datePublished">2017-07-27</time>
 </a>
 
@@ -542,7 +613,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/27/nodejs案例(json)思路分析/">nodejs 案例思路分析（json文件+后台渲染）</a>
+      <a class="article-title" href="/2017/07/27/nodejs案例(json + 后台渲染)思路分析/">nodejs 案例思路分析（json文件+后台渲染）</a>
     </h1>
   
 
@@ -552,7 +623,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h2 id="nodejs-案例思路分析（数据为json格式的本地文件）"><a href="#nodejs-案例思路分析（数据为json格式的本地文件）" class="headerlink" title="nodejs 案例思路分析（数据为json格式的本地文件）"></a>nodejs 案例思路分析（数据为json格式的本地文件）</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所以依赖的包"><a href="#3-安装所以依赖的包" class="headerlink" title="3.安装所以依赖的包"></a>3.安装所以依赖的包</h3><pre><code>- 1.express
+              <h2 id="nodejs-案例思路分析（数据为json格式的本地文件）"><a href="#nodejs-案例思路分析（数据为json格式的本地文件）" class="headerlink" title="nodejs 案例思路分析（数据为json格式的本地文件）"></a>nodejs 案例思路分析（数据为json格式的本地文件）</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所有依赖的包"><a href="#3-安装所有依赖的包" class="headerlink" title="3.安装所有依赖的包"></a>3.安装所有依赖的包</h3><pre><code>- 1.express
 - 2.art-template
 - 3.express-art-template
 - 4.body-parser
@@ -568,7 +639,7 @@
       
       
         <p class="article-more-link">
-          <a href="/2017/07/27/nodejs案例(json)思路分析/#more">more >></a>
+          <a href="/2017/07/27/nodejs案例(json + 后台渲染)思路分析/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

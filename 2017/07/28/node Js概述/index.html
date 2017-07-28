@@ -72,7 +72,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -104,6 +104,13 @@
 
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -396,6 +403,12 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/07/28/nodejs案例(mysql + 前端渲染)思路分析/">
+                    nodejs 案例思路分析（数据库+前端渲染）
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
                 <a href="/2017/07/28/hexo+github创建属于自己的博客/">
@@ -461,13 +474,37 @@
 
 
     
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://yoursite.com/2017/07/28/node Js概述/';
+            this.page.identifier = '2017/07/28/node Js概述/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//null.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
 
 
 
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/07/28/nodejs案例(mysql + 前端渲染)思路分析/" title="上一篇: nodejs 案例思路分析（数据库+前端渲染）">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -479,7 +516,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/node Js概述/">Node.js是做什么的</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/hexo+github创建属于自己的博客/">hexo+github创建属于自己的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/github创建多个blog/">github 创建多个blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/nodejs案例(mysql)思路分析/">nodejs 案例思路分析（数据库+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/nodejs案例(json)思路分析/">nodejs 案例思路分析（json文件+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/MySQL语句/">MYSQL 语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/node-js/">node js</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/nodejs案例(mysql + 前端渲染)思路分析/">nodejs 案例思路分析（数据库+前端渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/node Js概述/">Node.js是做什么的</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/hexo+github创建属于自己的博客/">hexo+github创建属于自己的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/github创建多个blog/">github 创建多个blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/nodejs案例(mysql + 后台渲染)思路分析/">nodejs 案例思路分析（数据库+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/nodejs案例(json + 后台渲染)思路分析/">nodejs 案例思路分析（json文件+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/MySQL语句/">MYSQL 语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/27/node-js/">node js</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/26/hello-world/">Hello World</a></li></ul>
 
 
 
